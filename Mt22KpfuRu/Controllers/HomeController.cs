@@ -49,5 +49,17 @@ namespace Mt22KpfuRu.Controllers
         {
             return View();
         }
+        public IActionResult Participants()
+        {
+            return View();
+        }
+        public IActionResult Conferences()
+        {
+            return View();
+        }
+        public IActionResult Excursions()
+        {
+            return View();
+        }
     }
 }
