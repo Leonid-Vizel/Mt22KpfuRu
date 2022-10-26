@@ -22,5 +22,11 @@
     "inputFiles": [
       "wwwroot/css/IndexStyle.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/css/ExcursionsStyle.min.css",
+    "inputFiles": [
+      "wwwroot/css/ExcursionsStyle.css"
+    ]
   }
 ]
