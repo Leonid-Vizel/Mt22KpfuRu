@@ -1,0 +1,68 @@
+﻿@{
+    string name = ViewContext.RouteData.Values["action"].ToString();
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Mt22KpfuRu</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Mt22KpfuRu.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <div class="navbar-brand">
+                    <img class="img-circle" width="100px" height="100px" src="~/img/main_logo.jpg">
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav me-auto d-flex justify-content-around flex-grow-1">
+                        <li class="nav-item display-7 text-nowrap">
+                            <a class="nav-link @(name.Equals("Index") ? "active" : "")" asp-controller="Home" asp-action="Index">Главная</a>
+                        </li>
+                        <li class="nav-item display-7 text-nowrap">
+                            <a class="nav-link @(name.Equals("About") ? "active" : "")" asp-controller="Home" asp-action="About">О конференции</a>
+                        </li>
+                        <li class="nav-item display-7 text-nowrap">
+                            <a class="nav-link @(name.Equals("Register") ? "active" : "")" asp-controller="Home" asp-action="Register">Регистрация</a>
+                        </li>
+                        <li class="nav-item display-7 text-nowrap">
+                            <a class="nav-link @(name.Equals("Program") ? "active" : "")" asp-controller="Home" asp-action="Program">Программа</a>
+                        </li>
+                        <li class="nav-item display-7 text-nowrap">
+                            <a class="nav-link @(name.Equals("Living") ? "active" : "")" asp-controller="Home" asp-action="Living">Проживание</a>
+                        </li>
+                        <li class="nav-item display-7 text-nowrap">
+                            <a class="nav-link @(name.Equals("Sponsors") ? "active" : "")" asp-controller="Home" asp-action="Sponsors">Спонсоры</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <div class="container" id="footer">
+        <div class="row">
+            <div class="col-4">
+            </div>
+            <div class="col-4">
+            </div>
+            <div class="col-4">
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

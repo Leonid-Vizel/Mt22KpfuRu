@@ -1,0 +1,268 @@
+﻿<style>
+    .accordion {
+        --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23FFFFFF'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23FFFFFF'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    }
+
+    @@media (max-width: 576px) {
+        .justify-content-xs-center {
+            justify-content: center !important;
+        }
+
+        .col-xs-12 {
+            flex: 0 0 auto;
+            width: 51%;
+        }
+    }
+</style>
+
+<div class="color-wrap">
+    <div class="container pt-3 pb-2">
+        <div class="text-light">
+            <h2 class="mt-0 text-center text-light">Информация о конференции</h2>
+            <p>
+                <img class="w-50" src="~/img/kpfu.png"/>
+                Конференция «Материалы и технологии XXI века» берет свое начало с 2000 г. Она более десяти лет проводилась на базе Казанского университета в качестве междисциплинарного научного мероприятия,
+                собиравшего на одной площадке студентов, аспирантов и молодых
+                ученых естественнонаучного профиля из различных вузов г. Казани. Впоследствии конференция получила
+                всероссийский уровень. В 2014 году в конференции приняло участие более 350 молодых ученых из разных
+                городов и регионов Российской Федерации, представляющих
+                более 50 высших учебных заведений и научно-исследовательских институтов. С пленарными лекциями для
+                молодых ученых выступили ведущие российские и зарубежные ученые, являющиеся одними из мировых
+                лидеров в своих областях науки.
+                <br>
+                В 2015 году конференция получила статус Международной
+                конференции, за счет привлечения к участию студентов, аспирантов и молодыхученых из ближнего и дальнего зарубежья.
+                Целями конференции являются популяризация научной деятельности в молодежной среде,
+                а также обмен опытом и налаживание контактов для последующих совместных исследований.
+                Формат конференции включает стендовые и устные доклады студентов, аспирантов и молодых
+                ученых более чем по 6 различным направлениям, а также мастер-классы и семинары представителей
+                крупных российских и международных компаний.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<div class="bg-primary">
+    <div class="container pt-4 pb-3">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="text-center">
+                    <h3 class="text-light mb-4">ДАТА И МЕСТО ПРОВЕДЕНИЯ:</h3>
+                    <p class="text-light">
+                        8–10 ноября 2021 г., г. Казань, ул. Кремлевская, д. 18
+                        <br>
+                        Казанский (Приволжский) федеральный университет
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="text-center">
+                    <h3 class="text-light mb-4">РАБОЧИЕ ЯЗЫКИ КОНФЕРЕНЦИИ:</h3>
+                    <p class="text-light">Русский и английский</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="color-wrap">
+    <div class="container text-light pt-3 pb-4" id="Sections">
+        <h2 class="text-center text-light mb-4">Основные научные направления</h2>
+
+        <div class="accordion mb-2">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button bg-primary text-light collapsed" onclick="this.blur();" type="button" data-bs-toggle="collapse" data-bs-target="#Accordion-0" aria-expanded="false">
+                        Медицина
+                    </button>
+                </h2>
+                <div id="Accordion-0" class="accordion-collapse bg-primary text-light collapse">
+                    <div class="accordion-body">
+                        <p class="p-0 m-0">Персонифицированная медицина, Регенеративная медицина и генотерапия; Разработка и рациональное применение лекарственных препаратов (прежде всего антибактериальных) и новые методы их доставки, Биоинформатика, вычислительная биология и омиксные технологии в здравоохранении; новые биомедицинские методы, приборы и материалы; Физико-химические основы медицины.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion mb-2">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button bg-primary text-light collapsed" onclick="this.blur();" type="button" data-bs-toggle="collapse" data-bs-target="#Accordion-1" aria-expanded="false">
+                        Биотехнология
+                    </button>
+                </h2>
+                <div id="Accordion-1" class="accordion-collapse bg-primary text-light collapse">
+                    <div class="accordion-body">
+                        <p class="p-0 m-0">Методы повышения продуктивности агро- и аквахозяйств, разработка средств химической и биологической защиты сельскохозяйственных растений и животных и диагностики заболеваний, хранение и переработка сельскохозяйственной продукции, методы и средства диагностики и мониторинга природной среды; создание безопасных и качественных, в том числе функциональных, продуктов питания.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion mb-2">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button bg-primary text-light collapsed" onclick="this.blur();" type="button" data-bs-toggle="collapse" data-bs-target="#Accordion-2" aria-expanded="false">
+                        Химия
+                    </button>
+                </h2>
+                <div id="Accordion-2" class="accordion-collapse bg-primary text-light collapse">
+                    <div class="accordion-body">
+                        <p class="p-0 m-0">Каталитические системы и технологии их получения для химической промышленности. Композиционные полимерные материалы и технологии их получения. Материалы для энергетики. Хемоинформатика и IT-технологии для материалов. Материалы биомедицинского назначения. Материалы и технологии для сенсоров.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion mb-2">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button bg-primary text-light collapsed" onclick="this.blur();" type="button" data-bs-toggle="collapse" data-bs-target="#Accordion-3" aria-expanded="false">
+                        Энергетика
+                    </button>
+                </h2>
+                <div id="Accordion-3" class="accordion-collapse bg-primary text-light collapse">
+                    <div class="accordion-body">
+                        <p class="p-0 m-0">Переход к экологически чистой и ресурсосберегающей энергетике, повышение эффективности добычи и глубокой переработки углеводородного сырья, формирование новых источников, способов транспортировки и хранения энергии. Экологически чистая и ресурсосберегающая энергетика, новые методы повышения эффективности добычи трудноизвлекаемых запасов, глубокой переработки углеводородного сырья, геологическое и гидродинамическое моделирование месторождений углеводородов; современные геофизические технологии поисков и разведки месторождений углеводородов; литология и петрофизика пород-коллекторов; реагенты для бурения, нефтепромысловая химия; гомогенный и гетерогенный катализ в нефтепереработке и нефтехимии.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion mb-2">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button bg-primary text-light collapsed" onclick="this.blur();" type="button" data-bs-toggle="collapse" data-bs-target="#Accordion-4" aria-expanded="false">
+                        Современные IT-технологии, робототехника и телекоммуникационные системы
+                    </button>
+                </h2>
+                <div id="Accordion-4" class="accordion-collapse bg-primary text-light collapse">
+                    <div class="accordion-body">
+                        <p class="p-0 m-0">Системы обработки больших объемов данных, машинного обучения и искусственного интеллекта, создание интеллектуальных транспортных и телекоммуникационных систем, задачи освоения и использовании космического и воздушного пространства, интеллектуальная робототехника; 3D моделирование; Робототехническая операционная система (ROS); Беспилотные транспортные системы; Поисково-спасательная робототехника; Планирование маршрута; Координатные метки; Мобильные роботы; Групповое взаимодействие роботов; Манипуляторы; Анализ изображения, Антропоморфные роботы.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button bg-primary text-light collapsed" onclick="this.blur();" type="button" data-bs-toggle="collapse" data-bs-target="#Accordion-5" aria-expanded="false">
+                        Дизайн, синтез и исследование новых функциональных материалов, мезо- и наноразмерных систем
+                    </button>
+                </h2>
+                <div id="Accordion-5" class="accordion-collapse bg-primary text-light collapse">
+                    <div class="accordion-body">
+                        <p class="p-0 m-0">Методы направленного поиска, синтеза и характеризации перспективных материалов для квантовой электроники, фотоники, микро- и наносистемной техники, квантовых технологий и других приложений.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container pt-3">
+    <h2 class="text-center">Оргкомитет V Всероссийской с международным участием школы-конференции студентов, аспирантов и молодых ученых «Материалы и технологии XXI века»</h2>
+    <hr>
+    <h3 class="title text-center">Со-председатели и координаторы</h3>
+    <div class="row justify-content-xs-center justify-content-sm-center justify-content-md-center justify-content-lg-center">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3">
+            <div class="card border-primary h-100" style="max-width: 20rem;">
+                <div class="card-header text-center"><b>Таюрский Дмитрий Альбертович</b></div>
+                <div class="card-body">
+                    <img src="~/img/orgs/Tajurskiy.jpg" class="w-100 h-100">
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3">
+            <div class="card border-primary h-100" style="max-width: 20rem;">
+                <div class="card-header text-center"><b>Киясов Андрей Павлович</b></div>
+                <div class="card-body">
+                    <img src="~/img/orgs/Kijasov.jpg" class="w-100 h-100">
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3">
+            <div class="card border-primary h-100" style="max-width: 20rem;">
+                <div class="card-header text-center"><b>Нургалиев Данис Карлович</b></div>
+                <div class="card-body">
+                    <img src="~/img/orgs/Nurgaliev.jpg" class="w-100 h-100">
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3">
+            <div class="card border-primary h-100" style="max-width: 20rem;">
+                <div class="card-header text-center"><b>Абрамский Михаил Михайлович</b></div>
+                <div class="card-body">
+                    <img src="~/img/orgs/Abramskiy.jpg" class="w-100 h-100">
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3">
+            <div class="card border-primary h-100" style="max-width: 20rem;">
+                <div class="card-header text-center"><b>Зиганшин Марат Ахмедович</b></div>
+                <div class="card-body">
+                    <img src="~/img/orgs/Ziganshin.jpeg" class="w-100 h-100">
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3">
+            <div class="card border-primary h-100" style="max-width: 20rem;">
+                <div class="card-header text-center"><b>Гафуров Марат Ревгерович</b></div>
+                <div class="card-body">
+                    <img src="~/img/orgs/Gafurov.jpeg" class="w-100 h-100">
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3">
+            <div class="card border-primary h-100" style="max-width: 20rem;">
+                <div class="card-header text-center"><b>Чикрин Дмитрий Евгеньевич</b></div>
+                <div class="card-body">
+                    <img src="~/img/orgs/Chikrin.png" class="w-100 h-100">
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <h3 class="text-center">Члены оргкомитета</h3>
+            <div class="col-lg-6">
+                <h3 class="title text-center"><a href="https://kpfu.ru/Irina.Chelnokova">Челнокова Ирина</a></h3>
+                <h3 class="title text-center"><a href="https://kpfu.ru/Zulfiya.Zinnatullina">Зиннатуллина Зульфия</a></h3>
+                <h3 class="title text-center"><a href="https://kpfu.ru/Ajdar.Hajdarov">Хайдаров Айдар</a> </h3>
+                <h3 class="title text-center"><a href="https://kpfu.ru/Anna.Gedmina">Гедмина Анна</a> </h3>
+                <h3 class="title text-center"><a href="https://kpfu.ru/Iskander.Vakhitov">Вахитов Искандер</a> </h3>
+                <h3 class="title text-center"><a href="https://kpfu.ru/almaz.zinnatullin">Зиннатуллин Алмаз</a> </h3>
+            </div>
+            <div class="col-lg-6">
+                <h3 class="title text-center"><a href="https://kpfu.ru/ulyana.ogorodnova">Галиханова Ульяна</a> </h3>
+                <h3 class="title text-center"><a href="https://kpfu.ru/ajrat.bilyalov">Билялов Айрат</a> </h3>
+                <h3 class="title text-center"><a href="https://kpfu.ru/Kim.Potapov">Потапов Ким</a> </h3>
+                <h3 class="title text-center"><a href="https://kpfu.ru/Anton.Kolchugin">Кольчугин Антон</a> </h3>
+                <h3 class="title text-center"><a href="https://kpfu.ru/Alexander.Gerasimov">Герасимов Александр</a> </h3>
+                <h3 class="title text-center"><a href="https://kpfu.ru/aliya.sulejmanova">Сулейманова Алия</a> </h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container sponsors">
+    <div class="text-center">
+        <h3>Партнеры конференции</h3>
+        <div class="row">
+            <div class="col-md-4 d-flex align-items-center">
+                <img class="w-100" src="~/img/sponsor-1.png">
+            </div>
+            <div class="col-md-4 d-flex align-items-center">
+                <img class="w-100" src="~/img/sponsor-2.jpg">
+            </div>
+            <div class="col-md-4 d-flex align-items-center">
+                <img class="w-100" src="~/img/sponsor-3.png">
+            </div>
+        </div>
+    </div>
+    <br>
+</div>

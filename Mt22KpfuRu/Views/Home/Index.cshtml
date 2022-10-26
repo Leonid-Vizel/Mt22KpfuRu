@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    @@media (max-width: 576px) {
+        .top-text {
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+    }
+
+    @@media (min-width: 576px) {
+        .top-text {
+            text-transform: uppercase;
+            font-size: 15px;
+        }
+    }
+
+    @@media (min-width: 768px) {
+        .top-text {
+            text-transform: uppercase;
+            font-size: 23px;
+        }
+    }
+
+    @@media (min-width: 992px) {
+        .top-text {
+            text-transform: uppercase;
+            font-size: 34px;
+        }
+    }
+
+</style>
+
+<div class="color-wrap">
+    <div class="container pt-2 pb-3">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2 class="top-text text-light">V Всероссийская с международным участием школа-конференция студентов, аспирантов и молодых ученых «Материалы и технологии XXI века»</h2>
+            </div>
+            <div class="col-lg-3 d-none d-lg-block">
+                <div class="h-100 d-flex align-items-center">
+                    <div class="d-flex justify-content-center">
+                        <img src="~/img/main_logo.jpg" class="img-circle" width="200px" height="200px">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 d-none d-lg-block">
+                <div class="h-100 d-flex align-items-center">
+                    <div class="d-flex justify-content-center">
+                        <img src="~/img/kpfu_logo.jpg" class="img-circle" width="200px" height="200px">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
