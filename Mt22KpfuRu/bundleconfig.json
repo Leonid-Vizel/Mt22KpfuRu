@@ -4,5 +4,23 @@
     "inputFiles": [
       "wwwroot/lib/bootstrap/dist/css/bootstrap.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/css/AboutStyle.min.css",
+    "inputFiles": [
+      "wwwroot/css/AboutStyle.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/site.min.css",
+    "inputFiles": [
+      "wwwroot/css/site.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/IndexStyle.min.css",
+    "inputFiles": [
+      "wwwroot/css/IndexStyle.css"
+    ]
   }
 ]

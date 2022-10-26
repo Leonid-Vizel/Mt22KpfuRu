@@ -1,27 +1,14 @@
-﻿<style>
-    .accordion {
-        --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23FFFFFF'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-        --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23FFFFFF'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-    }
-
-    @@media (max-width: 576px) {
-        .justify-content-xs-center {
-            justify-content: center !important;
-        }
-
-        .col-xs-12 {
-            flex: 0 0 auto;
-            width: 51%;
-        }
-    }
-</style>
+﻿@{
+    ViewData["Title"] = "О конференции";
+}
+<link rel="stylesheet" href="~/css/AboutStyle.min.css">
 
 <div class="color-wrap">
     <div class="container pt-3 pb-2">
         <div class="text-light">
-            <h2 class="mt-0 text-center text-light">Информация о конференции</h2>
-            <p>
-                <img class="w-50" src="~/img/kpfu.png"/>
+            <h2 class="text-center text-light mt-0">Информация о конференции</h2>
+            <img class="float-start w-img mb-2" src="~/img/kpfu.png" />
+            <p class="mx-3">
                 Конференция «Материалы и технологии XXI века» берет свое начало с 2000 г. Она более десяти лет проводилась на базе Казанского университета в качестве междисциплинарного научного мероприятия,
                 собиравшего на одной площадке студентов, аспирантов и молодых
                 ученых естественнонаучного профиля из различных вузов г. Казани. Впоследствии конференция получила
@@ -51,7 +38,7 @@
                 <div class="text-center">
                     <h3 class="text-light mb-4">ДАТА И МЕСТО ПРОВЕДЕНИЯ:</h3>
                     <p class="text-light">
-                        8–10 ноября 2021 г., г. Казань, ул. Кремлевская, д. 18
+                        30 ноября – 2 декабря 2022, г. Казань, ул. Кремлевская, д. 18
                         <br>
                         Казанский (Приволжский) федеральный университет
                     </p>
@@ -225,31 +212,34 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-
-
-        <div class="row">
-            <h3 class="text-center">Члены оргкомитета</h3>
-            <div class="col-lg-6">
-                <h3 class="title text-center"><a href="https://kpfu.ru/Irina.Chelnokova">Челнокова Ирина</a></h3>
-                <h3 class="title text-center"><a href="https://kpfu.ru/Zulfiya.Zinnatullina">Зиннатуллина Зульфия</a></h3>
-                <h3 class="title text-center"><a href="https://kpfu.ru/Ajdar.Hajdarov">Хайдаров Айдар</a> </h3>
-                <h3 class="title text-center"><a href="https://kpfu.ru/Anna.Gedmina">Гедмина Анна</a> </h3>
-                <h3 class="title text-center"><a href="https://kpfu.ru/Iskander.Vakhitov">Вахитов Искандер</a> </h3>
-                <h3 class="title text-center"><a href="https://kpfu.ru/almaz.zinnatullin">Зиннатуллин Алмаз</a> </h3>
-            </div>
-            <div class="col-lg-6">
-                <h3 class="title text-center"><a href="https://kpfu.ru/ulyana.ogorodnova">Галиханова Ульяна</a> </h3>
-                <h3 class="title text-center"><a href="https://kpfu.ru/ajrat.bilyalov">Билялов Айрат</a> </h3>
-                <h3 class="title text-center"><a href="https://kpfu.ru/Kim.Potapov">Потапов Ким</a> </h3>
-                <h3 class="title text-center"><a href="https://kpfu.ru/Anton.Kolchugin">Кольчугин Антон</a> </h3>
-                <h3 class="title text-center"><a href="https://kpfu.ru/Alexander.Gerasimov">Герасимов Александр</a> </h3>
-                <h3 class="title text-center"><a href="https://kpfu.ru/aliya.sulejmanova">Сулейманова Алия</a> </h3>
-            </div>
+<div class="container">
+    <hr>
+    <div class="row">
+        <h3 class="text-center">Члены оргкомитета</h3>
+        <div class="col-6">
+            <h3 class="title text-center"><a href="https://kpfu.ru/Irina.Chelnokova">Челнокова Ирина</a></h3>
+            <h3 class="title text-center"><a href="https://kpfu.ru/Zulfiya.Zinnatullina">Зиннатуллина Зульфия</a></h3>
+            <h3 class="title text-center"><a href="https://kpfu.ru/Ajdar.Hajdarov">Хайдаров Айдар</a> </h3>
+            <h3 class="title text-center"><a href="https://kpfu.ru/Anna.Gedmina">Гедмина Анна</a> </h3>
+            <h3 class="title text-center"><a href="https://kpfu.ru/Iskander.Vakhitov">Вахитов Искандер</a> </h3>
+            <h3 class="title text-center"><a href="https://kpfu.ru/almaz.zinnatullin">Зиннатуллин Алмаз</a> </h3>
+        </div>
+        <div class="col-6">
+            <h3 class="title text-center"><a href="https://kpfu.ru/ulyana.ogorodnova">Галиханова Ульяна</a> </h3>
+            <h3 class="title text-center"><a href="https://kpfu.ru/ajrat.bilyalov">Билялов Айрат</a> </h3>
+            <h3 class="title text-center"><a href="https://kpfu.ru/Kim.Potapov">Потапов Ким</a> </h3>
+            <h3 class="title text-center"><a href="https://kpfu.ru/Anton.Kolchugin">Кольчугин Антон</a> </h3>
+            <h3 class="title text-center"><a href="https://kpfu.ru/Alexander.Gerasimov">Герасимов Александр</a> </h3>
+            <h3 class="title text-center"><a href="https://kpfu.ru/aliya.sulejmanova">Сулейманова Алия</a> </h3>
         </div>
     </div>
 </div>
-<div class="container sponsors">
+
+<div class="container pt-2">
+    <hr>
     <div class="text-center">
         <h3>Партнеры конференции</h3>
         <div class="row">
@@ -264,5 +254,4 @@
             </div>
         </div>
     </div>
-    <br>
 </div>
