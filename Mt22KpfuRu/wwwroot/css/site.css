@@ -25,6 +25,16 @@ html {
     border-radius: 50%;
 }
 
+.hr-dashed {
+    border-top: 1px dashed #ffffff;
+    margin-bottom: 25px;
+}
+
+.bi-vk {
+    content: "\e900";
+    font-family: "icomoon" !important;
+}
+
 .navbar-toggler-icon {
     display: inline-block;
     width: 2em;
@@ -34,6 +44,36 @@ html {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
+}
+
+@font-face {
+    font-family: 'icomoon';
+    src: url('/fonts/icomoon.eot');
+    src: url('/fonts/icomoon.eot') format('embedded-opentype'), url('/fonts/icomoon.ttf') format('truetype'), url('/fonts/icomoon.woff') format('woff'), url('/fonts/icomoon.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    font-family: 'icomoon' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-vk:before {
+    content: "\e900";
+    color: #fff;
+}
+
+.no-line{
+    text-decoration: none;
 }
 
 @media (min-width: 1230px) {

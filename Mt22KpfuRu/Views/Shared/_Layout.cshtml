@@ -7,10 +7,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
-    <link rel="shortcut icon" type="image/x-icon" href="~/img/main_logo.jpg"/>
+    <link rel="shortcut icon" type="image/x-icon" href="~/img/main_logo.jpg" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Mt22KpfuRu.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
 <body>
     <header>
@@ -50,14 +51,64 @@
     <main role="main">
         @RenderBody()
     </main>
-
-    <div class="container" id="footer">
-        <div class="row">
-            <div class="col-4">
-            </div>
-            <div class="col-4">
-            </div>
-            <div class="col-4">
+    @{
+        string footerColorClass;
+        var dictValue = ViewData["footer"];
+        if (dictValue == null || dictValue is not bool || !(bool)dictValue)
+        {
+            footerColorClass = "color-wrap";
+        }
+        else
+        {
+            footerColorClass = "bg-primary";
+        }
+    }
+    <div class="@footerColorClass">
+        <div class="container pt-5" id="footer">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <h5 class="text-light">Адрес</h5>
+                    <div class="hr-dashed"></div>
+                    <p class="text-light">
+                        ул. Кремлевская 18,
+                        <br>
+                        Казань, Россия, 420008
+                        <br>
+                        <a class="text-danger" href="https://kpfu.ru">kpfu.ru</a>
+                    </p>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <h5 class="text-light">СМИ</h5>
+                    <div class="hr-dashed"></div>
+                    <div class="row">
+                        <div class="col d-flex justify-content-center align-content-center">
+                            <h3><i><a href="https://vk.com/kazan_federal_university" class="icon-vk no-line text-light"></a></i></h3>
+                        </div>
+                        <div class="col d-flex justify-content-center align-content-center">
+                            <h3><a href="https://www.instagram.com/kazanfederaluniversity/" class="bi bi-instagram text-light" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="*Деятельность Meta Platforms Inc запрещена в РФ"></a></h3>
+                        </div>
+                        <div class="col d-flex justify-content-center align-content-center">
+                            <h3><a href="https://www.facebook.com/KazanUniversity/" class="bi bi-facebook text-light" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="*Деятельность Meta Platforms Inc запрещена в РФ"></a></h3>
+                        </div>
+                        <div class="col d-flex justify-content-center align-content-center">
+                            <h3><a href="https://twitter.com/kazanuniversity" class="bi bi-twitter text-light"></a></h3>
+                        </div>
+                        <div class="col d-flex justify-content-center align-content-center">
+                            <h3><a href="https://www.youtube.com/univertv" class="bi bi-youtube text-light"></a></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <h5 class="text-light">Контакты</h5>
+                    <div class="hr-dashed"></div>
+                    <p class="text-light">
+                        <strong>Почта: </strong><a class="text-danger" href="mailto:info.materials21@kpfu.ru">info.materials21@kpfu.ru</a>
+                        <br>
+                        <strong>Тел.: </strong><a class="text-danger" href="tel:+78432387901">+7 (843) 238-79-01</a>
+                        <br>
+                        <strong>Факс: </strong><a class="text-danger" href="tel:+78432387901">+7 (843) 238-79-01</a>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
