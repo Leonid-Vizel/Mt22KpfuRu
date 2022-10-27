@@ -28,5 +28,11 @@
     "inputFiles": [
       "wwwroot/css/ExcursionsStyle.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/css/SponsorsStyle.min.css",
+    "inputFiles": [
+      "wwwroot/css/SponsorsStyle.css"
+    ]
   }
 ]
