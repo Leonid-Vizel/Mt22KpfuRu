@@ -34,5 +34,11 @@
     "inputFiles": [
       "wwwroot/css/SponsorsStyle.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/css/ProgramStyle.min.css",
+    "inputFiles": [
+      "wwwroot/css/ProgramStyle.css"
+    ]
   }
 ]

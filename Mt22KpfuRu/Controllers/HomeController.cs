@@ -1,15 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Mt22KpfuRu.Models;
-using System.Diagnostics;
 
 namespace Mt22KpfuRu.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController()
-        {
-            
-        }
+        //private readonly ApplicationDbContext context;
+        //public HomeController(ApplicationDbContext context)
+        //{
+        //    this.context = context;
+        //}
 
         public IActionResult Admin()
         {

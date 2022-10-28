@@ -11,6 +11,31 @@ namespace Mt22KpfuRu.Controllers
         }
         #endregion
 
+        #region Program
+        #region Add
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddProgramPoint(object model)
+        {
+            return View();
+        }
+        #endregion
+        #region Edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditProgramPoint(object model)
+        {
+            return View();
+        }
+        #endregion
+        #region List
+        public IActionResult Program()
+        {
+            return View();
+        }
+        #endregion
+        #endregion
+
         #region News
         #region Add
         public IActionResult CreateNews()
