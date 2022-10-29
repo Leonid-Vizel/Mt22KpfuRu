@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using JetBrains.Annotations;
+using Microsoft.AspNetCore.Mvc;
+using Mt22KpfuRu.Models;
+using X.PagedList;
+using static System.Net.WebRequestMethods;
 
 namespace Mt22KpfuRu.Controllers
 {
@@ -20,9 +24,20 @@ namespace Mt22KpfuRu.Controllers
             return View();
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
-            return View();
+            List<News> newsList = new List<News>()
+            {
+                new News()
+                {
+                    Id = 1,
+                    Title = "Зеркало",
+                    Description = "Появилось зеркало на сайте университета",
+                    Content = "С информацией о проведении Школы-конференции в 2022 г. и регистрацией можно ознакомиться по ссылке: <a href=\"https://kpfu.ru/science/nauchno-issledovatelskaya-rabota-studentov-nirs/materialy-i-tehnologii-xxi-veka-xxi-veka\">Материалы и технологии XXI века</a>",
+                    CreateTime = new DateTime(2022,10,29,17,12,00)
+                }
+            };
+            return View(newsList.ToPagedList(page, 6));
         }
 
         public IActionResult About()
