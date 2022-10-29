@@ -52,5 +52,11 @@
     "inputFiles": [
       "wwwroot/js/site.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/css/ImagesStyle.min.css",
+    "inputFiles": [
+      "wwwroot/css/ImagesStyle.css"
+    ]
   }
 ]
