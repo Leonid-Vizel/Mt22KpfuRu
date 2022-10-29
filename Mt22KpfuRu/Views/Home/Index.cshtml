@@ -86,12 +86,12 @@
                 <h3 class="ctitle centered">Быстрые ссылки</h3>
                 <ul class="links centered">
                     <li><a href="/kazan/" class="link-btn">Казань</a></li>
-                    <li><a href="https://docs.google.com/document/d/1Bnah3YBlVMAcOW48WY2nVyv44Xi1TxBx" download="" class="link-btn">Информационное письмо</a></li>
-                    <li><a href="/tours/" class="link-btn">Экскурсии</a></li>
-                    <li><a href="/about/#sections" class="link-btn">Секции</a></li>
+                    <li><a href="~/docs/InfoLetter.pdf" class="link-btn">Информационное письмо</a></li>
+                    <li><a asp-controller="Home" asp-action="Excursions" class="link-btn">Экскурсии</a></li>
+                    <li><a asp-controller="Home" asp-action="About" asp-fragment="Sections" class="link-btn">Секции</a></li>
                     <li><a href="http://kpfu.ru/" class="link-btn">Университет КФУ</a></li>
-                    <li><a href="/speakers/" class="link-btn">Пленарные докладчики</a></li>
-                    <li><a href="/kazan/" class="link-btn">История коференции</a></li>
+                    <li><a asp-controller="Home" asp-action="Participants" class="link-btn">Пленарные докладчики</a></li>
+                    <li><a asp-controller="Home" asp-action="Conferences" class="link-btn">История коференции</a></li>
                 </ul>
             </div>
         </div>
@@ -112,7 +112,6 @@
     </div>
 </div>
 <div class="our_photo">
-
 </div>
 <div class="container pt-2">
     <div class="text-center">
