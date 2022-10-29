@@ -122,7 +122,32 @@
   background-color: #3A539B;
   border-color: #ffffff;
 }
-a:hover, a:focus {
+.link-btn a:hover, a:focus {
   text-decoration: none;
   color: #01b2fe;
+}
+.all_news {
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+.news_block {
+    border: solid silver 1px;
+    padding-top: 1em;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 1em;
+}
+.cs-readmore-btn {
+    float: right;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    color: #2C3E50;
+}
+.all_partners_block{
+    padding-bottom:2rem;
+}
+.img-responsive{
+    width: 100%;
+    height: auto !important;
 }
