@@ -110,8 +110,14 @@
                             @news.Description
                         </article>
                         <div style="padding-top: 7px; font-size: 12px;">
-                            <b>Опубликовано:</b> @news.CreateTime.ToString("dd.MM.yyyy HH:mm")
-                            <a class="cs-readmore-btn cs-hovercolor" data-bs-toggle="modal" data-bs-target="#NewsModal-@news.Id"><i class="bi bi-newspaper"></i> Читать</a>
+                            <div class="row">
+                                <div class="col-7">
+                                    <b>Опубликовано:</b> @news.CreateTime.ToString("dd.MM.yyyy HH:mm")
+                                </div>
+                                <div class="col-5">
+                                    <a class="cs-readmore-btn cs-hovercolor" data-bs-toggle="modal" data-bs-target="#NewsModal-@news.Id"><i class="bi bi-newspaper"></i> Читать</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal fade" id="NewsModal-@news.Id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="false">
