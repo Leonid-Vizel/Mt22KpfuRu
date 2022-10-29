@@ -58,5 +58,11 @@
     "inputFiles": [
       "wwwroot/css/ImagesStyle.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/js/IndexScript.min.js",
+    "inputFiles": [
+      "wwwroot/js/IndexScript.js"
+    ]
   }
 ]
