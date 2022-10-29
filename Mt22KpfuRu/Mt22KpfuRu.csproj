@@ -24,4 +24,8 @@
     <PackageReference Include="X.PagedList.Mvc.Core" Version="8.4.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\img\Kazan\" />
+  </ItemGroup>
+
 </Project>

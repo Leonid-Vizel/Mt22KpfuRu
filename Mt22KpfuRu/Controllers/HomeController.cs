@@ -75,5 +75,9 @@ namespace Mt22KpfuRu.Controllers
         {
             return View();
         }
+        public IActionResult Kazan()
+        {
+            return View();
+        }
     }
 }
