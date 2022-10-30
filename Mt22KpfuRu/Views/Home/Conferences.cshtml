@@ -1,10 +1,13 @@
-﻿@{
+﻿@using Mt22KpfuRu.Models;
+@model ConferencesModel
+@{
     ViewData["Title"] = "История мероприятия";
     ViewData["footer"] = true;
+    Conference first = Model.Conferences[0];
 }
 
 @section Scripts{
-    <script src="~/js/PaginatorScript.js"></script>
+    <script src="~/js/PaginatorScript.min.js" asp-append-version="true"></script>
 }
 
 <div class="color-wrap h-100">
@@ -13,27 +16,24 @@
         <div class="d-flex justify-content-center">
             <div class="color-wrap">
                 <ul class="pagination pagination-lg">
-                    <li class="page-item active" id="2021">
-                        <a class="page-link" href="JavaScript:Toggle(2021)">2021</a>
-                    </li>
-                    <li class="page-item" id="2018">
-                        <a class="page-link" href="JavaScript:Toggle(2018)">2018</a>
-                    </li>
-                    <li class="page-item" id="2016">
-                        <a class="page-link" href="JavaScript:Toggle(2016)">2016</a>
-                    </li>
+                    @foreach (Conference conference in Model.Conferences)
+                    {
+                        <li class="page-item @(first == conference ? "active" : "")" id="@conference.Year">
+                            <a class="page-link" href="JavaScript:Toggle(@conference.Year,'@conference.Program','@conference.Thesis','@conference.Winners')">@conference.Year</a>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-md-4 col-sm-6 mb-3" id="program-block">
-                <a class="btn btn-lg btn-primary w-100" id="program-button" href="/docs/history/2021/Program.pdf">Программа</a>
+            <div class="col-md-4 col-sm-6 mb-3" id="program-block" @(first.Program ? "" : "hidden")>
+                <a class="btn btn-lg btn-primary w-100" id="program-button" href="/docs/history/@first.Year/Program.pdf">Программа</a>
             </div>
-            <div class="col-md-4 col-sm-6 mb-3" id="thesis-block">
-                <a class="btn btn-lg btn-primary w-100" id="thesis-button" href="/docs/history/2021/Thesis.pdf">Тезисы</a>
+            <div class="col-md-4 col-sm-6 mb-3" id="thesis-block" @(first.Thesis ? "" : "hidden")>
+                <a class="btn btn-lg btn-primary w-100" id="thesis-button" href="/docs/history/@first.Year/Thesis.pdf">Тезисы</a>
             </div>
-            <div class="col-md-4 col-sm-6" id="winners-block">
-                <a class="btn btn-lg btn-primary w-100" id="winners-button" href="/docs/history/2021/Winners.pdf">Победители</a>
+            <div class="col-md-4 col-sm-6" id="winners-block" @(first.Winners ? "" : "hidden")>
+                <a class="btn btn-lg btn-primary w-100" id="winners-button" href="/docs/history/@first.Year/Winners.pdf">Победители</a>
             </div>
         </div>
     </div>

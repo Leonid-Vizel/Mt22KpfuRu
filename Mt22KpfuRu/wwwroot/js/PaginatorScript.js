@@ -1,5 +1,5 @@
-﻿let currentYear = 2021;
-function Toggle(year) {
+﻿let currentYear = 0;
+function Toggle(year, program, thesis, winners) {
     if (year == currentYear) return;
     let years = document.getElementsByClassName("page-item");
     for (let i = 0; i < years.length; i++) {
@@ -18,7 +18,19 @@ function Toggle(year) {
     buttons[0].setAttribute('href', `/docs/history/${year}/Program.pdf`);
     buttons[1].setAttribute('href', `/docs/history/${year}/Thesis.pdf`);
     buttons[2].setAttribute('href', `/docs/history/${year}/Winners.pdf`);
-    if (year == "2016") {
+    if (program != 'True') {
+        document.getElementById('program-block').setAttribute('hidden', 'hidden');
+    }
+    else {
+        document.getElementById('program-block').removeAttribute('hidden');
+    }
+    if (thesis != 'True') {
+        document.getElementById('thesis-block').setAttribute('hidden', 'hidden');
+    }
+    else {
+        document.getElementById('thesis-block').removeAttribute('hidden');
+    }
+    if (winners != 'True') {
         document.getElementById('winners-block').setAttribute('hidden', 'hidden');
     }
     else {
