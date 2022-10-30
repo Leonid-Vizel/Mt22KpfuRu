@@ -1,110 +1,76 @@
 ﻿@using X.PagedList
-@model IPagedList<News>
+@model IndexModel
 @{
     ViewData["Title"] = "Главная";
     ViewData["footer"] = true;
 }
 <link rel="stylesheet" href="~/css/IndexStyle.min.css" asp-append-version="true">
 
-    <div class="color-wrap">
-        <div class="container pt-2">
-            <div class="row">
-                <div class="col-lg-6">
-                    <h2 class="top-text text-light">V Всероссийская с международным участием школа-конференция студентов, аспирантов и молодых ученых «Материалы и технологии XXI века»</h2>
-                </div>
-                <div class="col-lg-3 d-none d-lg-block">
-                    <div class="h-100 d-flex align-items-center">
-                        <div class="d-flex justify-content-center">
-                            <a href="https://kpfu.ru/science/nauchno-issledovatelskaya-rabota-studentov-nirs/materialy-i-tehnologii-xxi-veka-xxi-veka"><img src="~/img/main_logo.jpg" class="img-circle" width="200px" height="200px"></a>
-                        </div>
+<div class="color-wrap">
+    <div class="container pt-2">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2 class="top-text text-light">V Всероссийская с международным участием школа-конференция студентов, аспирантов и молодых ученых «Материалы и технологии XXI века»</h2>
+            </div>
+            <div class="col-lg-3 d-none d-lg-block">
+                <div class="h-100 d-flex align-items-center">
+                    <div class="d-flex justify-content-center">
+                        <a href="https://kpfu.ru/science/nauchno-issledovatelskaya-rabota-studentov-nirs/materialy-i-tehnologii-xxi-veka-xxi-veka"><img src="~/img/main_logo.jpg" class="img-circle" width="200px" height="200px"></a>
                     </div>
                 </div>
-                <div class="col-lg-3 d-none d-lg-block">
-                    <div class="h-100 d-flex align-items-center">
-                        <div class="d-flex justify-content-center">
-                            <a href="https://kpfu.ru/"><img src="~/img/kpfu_logo.jpg" class="img-circle" width="200px" height="200px"></a>
-                        </div>
+            </div>
+            <div class="col-lg-3 d-none d-lg-block">
+                <div class="h-100 d-flex align-items-center">
+                    <div class="d-flex justify-content-center">
+                        <a href="https://kpfu.ru/"><img src="~/img/kpfu_logo.jpg" class="img-circle" width="200px" height="200px"></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container portfoliowrap">
-        <div class="row">
-            <div class="col-lg-3 col-md-4">
-                <div class="centered ctitle">
-                    <center>
-                        <h3>Ключевые даты</h3>
-                        <ul class="event-list">
-                            <li>
-                                <time>
-                                    <div class="inner">
-                                        <span class="day">12 ОКТЯБРЯ 2022</span><br>
-                                        <span class="time"></span>
-                                    </div>
-                                </time>
-                                <div class="info">
-                                    <div class="inner">
-                                        <b class="title" style="font-size: 16px;">Начало регистрации</b>
-                                        <p class="desc"></p>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <time>
-                                    <div class="inner">
-                                        <span class="day">12 НОЯБРЯ 2022</span><br>
-                                        <span class="time"></span>
-                                    </div>
-                                </time>
-                                <div class="info">
-                                    <div class="inner">
-                                        <b class="title" style="font-size: 16px;">Конец регистрации</b>
-                                        <p class="desc"></p>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <time>
-                                    <div class="inner">
-                                        <span class="day">30 НОЯБРЯ 2022</span><br>
-                                        <span class="time"></span>
-                                    </div>
-                                </time>
-                                <div class="info">
-                                    <div class="inner">
-                                        <b class="title" style="font-size: 16px;">Начало конференции</b>
-                                        <p class="desc"></p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </center>
-                </div>
-                <div class="hline"></div>
-                <div>
-                    <h3 class="ctitle centered">Быстрые ссылки</h3>
-                    <ul class="links centered">
-                        <li><a asp-controller="Home" asp-action="Kazan" class="link-btn">Казань</a></li>
-                        <li><a href="~/docs/InfoLetter.pdf" class="link-btn">Информационное письмо</a></li>
-                        <li><a asp-controller="Home" asp-action="Excursions" class="link-btn">Экскурсии</a></li>
-                        <li><a asp-controller="Home" asp-action="About" asp-fragment="Sections" class="link-btn">Секции</a></li>
-                        <li><a href="http://kpfu.ru/" class="link-btn">Университет КФУ</a></li>
-                        <li><a asp-controller="Home" asp-action="Participants" class="link-btn">Пленарные докладчики</a></li>
-                        <li><a asp-controller="Home" asp-action="Conferences" class="link-btn">История коференции</a></li>
-                    </ul>
-                </div>
+</div>
+<div class="container portfoliowrap">
+    <div class="row">
+        <div class="col-lg-3 col-md-4">
+            <h3 class="text-center">Ключевые даты</h3>
+            <ul class="event-list">
+                @foreach (Date date in Model.Dates)
+                {
+                    <li>
+                        <div class="time d-flex align-items-center justify-content-center">
+                            <span class="text-center">
+                                @date.DateTime.ToString("d MMMM yyyy")
+                                @if (date.ShowTime)
+                                {
+                                    @date.DateTime.ToString(" HH:mm")
+                                }
+                            </span>
+                        </div>
+                        <div class="info d-flex align-items-center justify-content-center">
+                            <h4 class="text-center">@date.Name</h4>
+                        </div>
+                    </li>
+                }
+            </ul>
+            <div class="hline"></div>
+            <div>
+                <h3 class="text-center">Быстрые ссылки</h3>
+                <ul class="links text-center">
+                    @foreach (FastLink link in Model.FastLinks)
+                    {
+                        <li><a class="link-btn" href="@link.Url">@link.Name</a></li>
+                    }
+                </ul>
             </div>
-            <div class="col-lg-9 col-md-8 all_news" id="news">
-                <div id="news-loaded">
-                    <h3 class="centered">Новости</h3>
-                    <partial name="_PagerPartial" model="Model" />
-                @foreach (News news in Model)
+        </div>
+        <div class="col-lg-9 col-md-8 all_news" id="news">
+            <div id="news-loaded">
+                <h3 class="text-center">Новости</h3>
+                <partial name="_PagerPartial" model="Model.News" />
+                @foreach (News news in Model.News)
                 {
                     <div class="news_block mb-2">
-                        <h5 class="centered">@news.Title</h5>
+                        <h5 class="text-center">@news.Title</h5>
                         <hr />
                         <article style="word-wrap: break-word;  font-size: 18px;">
                             @news.Description
@@ -136,7 +102,7 @@
                         </div>
                     </div>
                 }
-                <partial name="_PagerPartial" model="Model" />
+                <partial name="_PagerPartial" model="Model.News" />
             </div>
         </div>
     </div>
@@ -146,7 +112,7 @@
 
 <partial name="_SponsorsPartial" model="false">
 
-@section Scripts{
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/js/IndexScript.min.js"></script>
-}
+    @section Scripts{
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/js/IndexScript.min.js"></script>
+    }

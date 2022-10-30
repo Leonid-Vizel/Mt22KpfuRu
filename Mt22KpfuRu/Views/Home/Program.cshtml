@@ -1,7 +1,7 @@
-﻿@{
+﻿@model ProgramModel
+@{
     ViewData["Title"] = "Программа конференции";
     ViewData["footer"] = true;
-    bool admin = false;
 }
 <link rel="stylesheet" href="~/css/ProgramStyle.min.css">
 
@@ -17,84 +17,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="cell-centered"><td colspan="3">30 ноября 2022 г.</td></tr>
-                <tr class="cell-centered">
-                    <td>10.00 - 13.00</td>
-                    <td>Регистрация</td>
-                    <td><a class="text-light" href="https://yandex.ru/maps/org/kfu/1297536680/?ll=49.122191%2C55.791870&z=16">Кремлёвская 35</a></td>
-                </tr>
-                <tr class="cell-centered">
-                    <td>14.00 - 14.30</td>
-                    <td>Открытие конференции</td>
-                    <td><a class="text-light" href="https://yandex.ru/maps/org/kfu/1297536680/?ll=49.122191%2C55.791870&z=16">Кремлёвская 35</a>, каб. 108/109</td>
-                </tr>
-                <tr class="cell-centered">
-                    <td>14.30 - 16.00</td>
-                    <td>Пленарные лекции</td>
-                    <td><a class="text-light" href="https://yandex.ru/maps/org/kfu/1297536680/?ll=49.122191%2C55.791870&z=16">Кремлёвская 35</a>, каб. 108/109</td>
-                </tr>
-                <tr class="cell-centered">
-                    <td>16.00 - 16.30</td>
-                    <td>Кофе-брейк</td>
-                    <td></td>
-                </tr>
-                <tr class="cell-centered">
-                    <td>16.30 - 18.30</td>
-                    <td>Секционные доклады</td>
-                    <td><a class="text-light" href="https://yandex.ru/maps/org/kfu/1297536680/?ll=49.122191%2C55.791870&z=16">Кремлёвская 35</a>, каб. 216/218</td>
-                </tr>
-                <tr class="cell-centered"><td colspan="3">1 декабря 2022 г.</td></tr>
-                <tr class="cell-centered">
-                    <td>09.30 - 11.00</td>
-                    <td>Пленарные лекции (онлайн)</td>
-                    <td><a class="text-light" href="https://yandex.ru/maps/org/kfu/1297536680/?ll=49.122191%2C55.791870&z=16">Кремлёвская 35</a>, каб. 108/109</td>
-                </tr>
-                <tr class="cell-centered">
-                    <td>11.00 - 12.00</td>
-                    <td>Свободное время</td>
-                    <td></td>
-                </tr>
-                <tr class="cell-centered">
-                    <td>12.00 - 14.00</td>
-                    <td>Блиц доклады (по секциям)</td>
-                    <td><a class="text-light" href="https://yandex.ru/maps/org/kfu/1297536680/?ll=49.122191%2C55.791870&z=16">Кремлёвская 35</a>, каб. 216/218</td>
-                </tr>
-                <tr class="cell-centered">
-                    <td>14.00 - 15.00</td>
-                    <td>Обед</td>
-                    <td></td>
-                </tr>
-                <tr class="cell-centered">
-                    <td>15.00 - 16.30</td>
-                    <td>Секционные доклады</td>
-                    <td><a class="text-light" href="https://yandex.ru/maps/org/kfu/1297536680/?ll=49.122191%2C55.791870&z=16">Кремлёвская 35</a>, каб. 216/218</td>
-                </tr>
-                <tr class="cell-centered">
-                    <td>16.30 - 17.00</td>
-                    <td>Кофе-брейк</td>
-                    <td></td>
-                </tr>
-                <tr class="cell-centered">
-                    <td>17.00 - 18.30</td>
-                    <td>Секционные доклады</td>
-                    <td><a class="text-light" href="https://yandex.ru/maps/org/kfu/1297536680/?ll=49.122191%2C55.791870&z=16">Кремлёвская 35</a>, каб. 216/218</td>
-                </tr>
-                <tr class="cell-centered"><td colspan="3">2 декабря 2022 г.</td></tr>
-                <tr class="cell-centered">
-                    <td>9.30 - 12.00</td>
-                    <td>Блиц доклады (по секциям)</td>
-                    <td><a class="text-light" href="https://yandex.ru/maps/org/kfu/1297536680/?ll=49.122191%2C55.791870&z=16">Кремлёвская 35</a>, каб. 216/218</td>
-                </tr>
-                <tr class="cell-centered">
-                    <td>12.00 - 15.00</td>
-                    <td>Обед, свободное время</td>
-                    <td></td>
-                </tr>
-                <tr class="cell-centered">
-                    <td>15.00 - 16.00</td>
-                    <td>Закрытие конференции</td>
-                    <td><a class="text-light" href="https://yandex.ru/maps/org/kfu/1297536680/?ll=49.122191%2C55.791870&z=16">Кремлёвская 35</a>, каб. 108/109</td>
-                </tr>
+                @foreach (IGrouping<DateOnly, ProgramPart> group in Model.Parts)
+                {
+                    <tr class="cell-centered"><td colspan="3">@group.Key.ToString("d MMMM yyyy г.")</td></tr>
+                    @foreach (ProgramPart part in group)
+                    {
+                        <tr class="cell-centered">
+                            <td>@part.TimeStart.ToString("HH:mm") - @part.TimeEnd.ToString("HH:mm")</td>
+                            <td>@part.Name</td>
+                            <td>@Html.Raw(part.Place)</td>
+                        </tr>
+                    }
+                }
             </tbody>
         </table>
         <div class="d-flex justify-content-center">
@@ -102,92 +36,3 @@
         </div>
     </div>
 </div>
-
-@if (admin)
-{
-    //Это на будущее для создания + редактирования, пока отключено
-    @section Scripts
-    {
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script></script>
-    }
-
-    @Html.AntiForgeryToken()
-
-    <div class="modal fade" id="CreateModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="false">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5">Расширение программы конференции</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <input id="Create-Counter" hidden>
-                    <div class="mb-1">
-                        <label class="form-label">Дата мероприятия</label>
-                        <input class="form-control" type="date" id="Create-Date" />
-                    </div>
-                    <div class="mb-1">
-                        <label class="form-label">Время начала</label>
-                        <input class="form-control" type="time" id="Create-Time1" />
-                    </div>
-                    <div class="mb-1">
-                        <label class="form-label">Время конца</label>
-                        <input class="form-control" type="time" id="Create-Time2" />
-                    </div>
-                    <div class="mb-1">
-                        <label class="form-label">Название</label>
-                        <textarea class="form-control w-100" id="Create-Name"></textarea>
-                    </div>
-                    <div class="mb-1">
-                        <label class="form-label">Место проведения</label>
-                        <textarea class="form-control w-100" id="Create-Place"></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" data-bs-toggle="tooltip" data-bs-title="Нажмите, чтобы вернуться к таблице">Отменить</button>
-                    <button type="button" onclick="Create()" class="btn btn-success" data-bs-toggle="tooltip" data-bs-title="Нажмите, чтобы применить изменения">Добавить</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="EditModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="false">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5">Изменение программы конференции</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <input id="Edit-Counter" hidden>
-                    <input id="Edit-Id" hidden>
-                    <div class="mb-1">
-                        <label class="form-label">Дата мероприятия</label>
-                        <input class="form-control" type="date" id="Edit-Date" />
-                    </div>
-                    <div class="mb-1">
-                        <label class="form-label">Время начала</label>
-                        <input class="form-control" type="time" id="Edit-Time1" />
-                    </div>
-                    <div class="mb-1">
-                        <label class="form-label">Время конца</label>
-                        <input class="form-control" type="time" id="Edit-Time2" />
-                    </div>
-                    <div class="mb-1">
-                        <label class="form-label">Название</label>
-                        <textarea class="form-control w-100" id="Edit-Name"></textarea>
-                    </div>
-                    <div class="mb-1">
-                        <label class="form-label">Место проведения</label>
-                        <textarea class="form-control w-100" id="Edit-Place"></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" data-bs-toggle="tooltip" data-bs-title="Нажмите, чтобы вернуться к таблице">Отменить</button>
-                    <button type="button" onclick="Edit()" class="btn btn-success" data-bs-toggle="tooltip" data-bs-title="Нажмите, чтобы применить изменения">Добавить</button>
-                </div>
-            </div>
-        </div>
-    </div>
-}
