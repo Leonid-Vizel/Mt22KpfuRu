@@ -1,72 +1,46 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Mt22KpfuRu.Instruments;
+using Mt22KpfuRu.Models;
 
 namespace Mt22KpfuRu.Controllers
 {
     public class AdminController : Controller
     {
-        #region Admin Panel
+        private readonly IWebHostEnvironment Environment;
+        public AdminController(IWebHostEnvironment environment)
+        {
+            Environment = environment;
+        }
+
+        public IActionResult Auth()
+        {
+            if (HttpContext.Session.Keys.Contains("Login"))
+            {
+                return RedirectToAction("Panel", "Admin");
+            }
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Auth(string login, string password)
+        {
+            string hash = Hasher.ComputeHash(login, password);
+            Admin? foundAdmin = DataBank.AdminStore.List.FirstOrDefault(x=>x.Login.Equals(login) && x.HashPassword.Equals(hash));
+            if (foundAdmin == null)
+            {
+                return StatusCode(401);
+            }
+            HttpContext.Session.SetString("Login", login);
+            return RedirectToAction("Panel", "Admin");
+        }
         public IActionResult Panel()
         {
+            if (!HttpContext.Session.Keys.Contains("Login"))
+            {
+                return StatusCode(401);
+            }
             return View();
         }
-        #endregion
-
-        #region Program
-        #region Add
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult AddProgramPoint(object model)
-        {
-            return View();
-        }
-        #endregion
-        #region Edit
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult EditProgramPoint(object model)
-        {
-            return View();
-        }
-        #endregion
-        #region List
-        public IActionResult Program()
-        {
-            return View();
-        }
-        #endregion
-        #endregion
-
-        #region News
-        #region Add
-        public IActionResult CreateNews()
-        {
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult CreateNews(object model)
-        {
-            return View();
-        }
-        #endregion
-        #region Edit
-        public IActionResult EditNews(int id)
-        {
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult EditNews(object model)
-        {
-            return View();
-        }
-        #endregion
-        #region List
-        public IActionResult News()
-        {
-            return View();
-        }
-        #endregion
-        #endregion
     }
 }

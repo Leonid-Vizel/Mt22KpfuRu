@@ -14,4 +14,6 @@ public class Conference
         Thesis = thesis;
         Winners = winners;
     }
+
+    public Conference() { }
 }
