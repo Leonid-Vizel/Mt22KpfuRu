@@ -8,12 +8,12 @@ namespace Mt22KpfuRu.Controllers
         public IActionResult Index(int page = 1) => View(DataBank.IndexModel.CopyFromPage(page));
         public IActionResult Conferences() => View(DataBank.ConferencesModel.Copy());
         public IActionResult Program() => View(DataBank.ProgramModel.Copy());
+        public IActionResult Excursions() => View(DataBank.ExcursionModel);
+        public IActionResult Kazan() => View(DataBank.KazanModel);
+        public IActionResult Living() => View(DataBank.MapModel);
         public IActionResult About() => View();
         public IActionResult Register() => View();
-        public IActionResult Living() => View();
         public IActionResult Sponsors() => View();
         public IActionResult Participants() => View();
-        public IActionResult Excursions() => View();
-        public IActionResult Kazan() => View();
     }
 }
