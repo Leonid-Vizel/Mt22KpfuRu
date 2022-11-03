@@ -64,5 +64,11 @@
     "inputFiles": [
       "wwwroot/js/IndexScript.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/css/AdminPanelStyle.min.css",
+    "inputFiles": [
+      "wwwroot/css/AdminPanelStyle.css"
+    ]
   }
 ]

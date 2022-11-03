@@ -5,7 +5,7 @@ namespace Mt22KpfuRu.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index(int page = 1) => View(DataBank.GetIndexModel());
+        public IActionResult Index(int page = 1) => View(DataBank.GetIndexModel(page));
         public IActionResult Conferences() => View(DataBank.GetConferencesModel());
         public IActionResult Program() => View(DataBank.GetProgramModel());
         public IActionResult Excursions() => View(DataBank.GetExcursionModel());

@@ -20,7 +20,7 @@ public static class DataBank
         {
             Dates = DateStore.List,
             FastLinks = FastLinkStore.List,
-            News = NewsStore.List.ToPagedList(page, 6)
+            News = NewsStore.List.OrderByDescending(x=>x.CreateTime).ToPagedList(page, 6)
         };
     }
     public static ProgramModel GetProgramModel()
