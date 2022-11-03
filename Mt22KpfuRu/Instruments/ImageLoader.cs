@@ -7,7 +7,7 @@
             string fileName = file.FileName;
             if (!fileName.EndsWith(".png") && !fileName.EndsWith(".jpg") && !fileName.EndsWith(".jpeg") && !fileName.EndsWith(".jfif"))
             {
-                return null;
+                return string.Empty;
             }
             Guid guidForName = new Guid();
             string extension = Path.GetExtension(fileName);
@@ -29,6 +29,10 @@
                 return null;
             }
             return $"{guidForName}{extension}";
+
+            //"***.jpg" - Создано успешно
+            //"" - файл не является картинкой
+            //null - Ошибка записи
         }
     }
 }

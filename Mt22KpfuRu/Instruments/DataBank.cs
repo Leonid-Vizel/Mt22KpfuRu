@@ -13,6 +13,9 @@ public static class DataBank
     public static XMLStore<Conference> ConferenceStore { get; set; }
     public static XMLStore<KazanPlace> KazanStore { get; set; }
     public static XMLStore<ExcursionPart> ExcursionStore { get; set; }
+    public static XMLStore<Thesis> ThesisStore { get; set; }
+    public static XMLStore<Coordinator> CoordinatorStore { get; set; }
+    public static XMLStore<Orgcom> OrgcomStore { get; set; }
 
     public static IndexModel GetIndexModel(int page = 1)
     {
@@ -20,7 +23,7 @@ public static class DataBank
         {
             Dates = DateStore.List,
             FastLinks = FastLinkStore.List,
-            News = NewsStore.List.OrderByDescending(x=>x.CreateTime).ToPagedList(page, 6)
+            News = NewsStore.List.OrderByDescending(x => x.CreateTime).ToPagedList(page, 6)
         };
     }
     public static ProgramModel GetProgramModel()
@@ -58,6 +61,15 @@ public static class DataBank
             YandexFrame = "<iframe src=\"https://yandex.ru/map-widget/v1/?um=constructor%3Ab75ac822ac159b3eda9e9a7b43cac62db4f5e8ff234b06031aee6b5542f4ecfb&amp;source=constructor\" width=\"100%\" height=\"660\" frameborder=\"0\"></iframe>"
         };
     }
+    public static AboutModel GetAboutModel()
+    {
+        return new AboutModel()
+        {
+            Coordinators = CoordinatorStore.List,
+            Orgcoms = OrgcomStore.List,
+            Thesises = ThesisStore.List
+        };
+    }
 
     public static void Initialize(string mainPath)
     {
@@ -69,5 +81,8 @@ public static class DataBank
         ConferenceStore = new XMLStore<Conference>($"{mainPath}\\Storage\\History.XML");
         KazanStore = new XMLStore<KazanPlace>($"{mainPath}\\Storage\\Kazan.XML");
         ExcursionStore = new XMLStore<ExcursionPart>($"{mainPath}\\Storage\\Excursion.XML");
+        ThesisStore = new XMLStore<Thesis>($"{mainPath}\\Storage\\Thesis.XML");
+        OrgcomStore = new XMLStore<Orgcom>($"{mainPath}\\Storage\\OrgComs.XML");
+        CoordinatorStore = new XMLStore<Coordinator>($"{mainPath}\\Storage\\Coordinators.XML");
     }
 }

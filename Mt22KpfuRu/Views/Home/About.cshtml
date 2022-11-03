@@ -1,5 +1,7 @@
-﻿@{
+﻿@model AboutModel
+@{
     ViewData["Title"] = "О конференции";
+    int counter = 0;
 }
 <link rel="stylesheet" href="~/css/AboutStyle.min.css" asp-append-version="true">
 
@@ -57,96 +59,24 @@
 <div class="color-wrap">
     <div class="container text-light pt-3 pb-4" id="Sections">
         <h2 class="text-center text-light mb-4">Основные научные направления</h2>
-
-        <div class="accordion mb-2">
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button bg-primary text-light collapsed" onclick="this.blur();" type="button" data-bs-toggle="collapse" data-bs-target="#Accordion-0" aria-expanded="false">
-                        Медицина
-                    </button>
-                </h2>
-                <div id="Accordion-0" class="accordion-collapse bg-primary text-light collapse">
-                    <div class="accordion-body">
-                        <p class="p-0 m-0">Персонифицированная медицина, Регенеративная медицина и генотерапия; Разработка и рациональное применение лекарственных препаратов (прежде всего антибактериальных) и новые методы их доставки, Биоинформатика, вычислительная биология и омиксные технологии в здравоохранении; новые биомедицинские методы, приборы и материалы; Физико-химические основы медицины.</p>
+        @foreach(Thesis thesis in Model.Thesises)
+        {
+            counter++;
+            <div class="accordion mb-2">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button bg-primary text-light collapsed" onclick="this.blur();" type="button" data-bs-toggle="collapse" data-bs-target="#Accordion-@counter" aria-expanded="false">
+                            @thesis.Name
+                        </button>
+                    </h2>
+                    <div id="Accordion-@counter" class="accordion-collapse bg-primary text-light collapse">
+                        <div class="accordion-body">
+                            <p class="p-0 m-0">@Html.Raw(thesis.Description)</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="accordion mb-2">
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button bg-primary text-light collapsed" onclick="this.blur();" type="button" data-bs-toggle="collapse" data-bs-target="#Accordion-1" aria-expanded="false">
-                        Биотехнология
-                    </button>
-                </h2>
-                <div id="Accordion-1" class="accordion-collapse bg-primary text-light collapse">
-                    <div class="accordion-body">
-                        <p class="p-0 m-0">Методы повышения продуктивности агро- и аквахозяйств, разработка средств химической и биологической защиты сельскохозяйственных растений и животных и диагностики заболеваний, хранение и переработка сельскохозяйственной продукции, методы и средства диагностики и мониторинга природной среды; создание безопасных и качественных, в том числе функциональных, продуктов питания.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="accordion mb-2">
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button bg-primary text-light collapsed" onclick="this.blur();" type="button" data-bs-toggle="collapse" data-bs-target="#Accordion-2" aria-expanded="false">
-                        Химия
-                    </button>
-                </h2>
-                <div id="Accordion-2" class="accordion-collapse bg-primary text-light collapse">
-                    <div class="accordion-body">
-                        <p class="p-0 m-0">Каталитические системы и технологии их получения для химической промышленности. Композиционные полимерные материалы и технологии их получения. Материалы для энергетики. Хемоинформатика и IT-технологии для материалов. Материалы биомедицинского назначения. Материалы и технологии для сенсоров.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="accordion mb-2">
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button bg-primary text-light collapsed" onclick="this.blur();" type="button" data-bs-toggle="collapse" data-bs-target="#Accordion-3" aria-expanded="false">
-                        Энергетика
-                    </button>
-                </h2>
-                <div id="Accordion-3" class="accordion-collapse bg-primary text-light collapse">
-                    <div class="accordion-body">
-                        <p class="p-0 m-0">Переход к экологически чистой и ресурсосберегающей энергетике, повышение эффективности добычи и глубокой переработки углеводородного сырья, формирование новых источников, способов транспортировки и хранения энергии. Экологически чистая и ресурсосберегающая энергетика, новые методы повышения эффективности добычи трудноизвлекаемых запасов, глубокой переработки углеводородного сырья, геологическое и гидродинамическое моделирование месторождений углеводородов; современные геофизические технологии поисков и разведки месторождений углеводородов; литология и петрофизика пород-коллекторов; реагенты для бурения, нефтепромысловая химия; гомогенный и гетерогенный катализ в нефтепереработке и нефтехимии.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="accordion mb-2">
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button bg-primary text-light collapsed" onclick="this.blur();" type="button" data-bs-toggle="collapse" data-bs-target="#Accordion-4" aria-expanded="false">
-                        Современные IT-технологии, робототехника и телекоммуникационные системы
-                    </button>
-                </h2>
-                <div id="Accordion-4" class="accordion-collapse bg-primary text-light collapse">
-                    <div class="accordion-body">
-                        <p class="p-0 m-0">Системы обработки больших объемов данных, машинного обучения и искусственного интеллекта, создание интеллектуальных транспортных и телекоммуникационных систем, задачи освоения и использовании космического и воздушного пространства, интеллектуальная робототехника; 3D моделирование; Робототехническая операционная система (ROS); Беспилотные транспортные системы; Поисково-спасательная робототехника; Планирование маршрута; Координатные метки; Мобильные роботы; Групповое взаимодействие роботов; Манипуляторы; Анализ изображения, Антропоморфные роботы.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="accordion">
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button bg-primary text-light collapsed" onclick="this.blur();" type="button" data-bs-toggle="collapse" data-bs-target="#Accordion-5" aria-expanded="false">
-                        Дизайн, синтез и исследование новых функциональных материалов, мезо- и наноразмерных систем
-                    </button>
-                </h2>
-                <div id="Accordion-5" class="accordion-collapse bg-primary text-light collapse">
-                    <div class="accordion-body">
-                        <p class="p-0 m-0">Методы направленного поиска, синтеза и характеризации перспективных материалов для квантовой электроники, фотоники, микро- и наносистемной техники, квантовых технологий и других приложений.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        }
     </div>
 </div>
 
@@ -155,97 +85,22 @@
     <hr>
     <h3 class="title text-center">Со-председатели и координаторы</h3>
     <div class="row justify-content-xs-center justify-content-sm-center justify-content-md-center justify-content-lg-center">
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3">
-            <div class="card border-primary h-100" style="max-width: 20rem;">
-                <div class="card-header text-center">
-                    <span>
-                        <b>Таюрский Дмитрий Альбертович</b>
-                        <a href="https://kpfu.ru/Dmitry.Tayurskii" class="position-absolute top-right bi bi-box-arrow-up-right"></a>
-                    </span>
-                </div>
-                <div class="card-body">
-                    <img src="~/img/orgs/Tajurskiy.jpg" class="w-100 h-100">
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3">
-            <div class="card border-primary h-100" style="max-width: 20rem;">
-                <div class="card-header text-center">
-                    <span>
-                        <b>Киясов Андрей Павлович</b>
-                        <a href="https://kpfu.ru/andrej.kiyasov" class="position-absolute top-right bi bi-box-arrow-up-right"></a>
-                    </span>
-                </div>
-                <div class="card-body">
-                    <img src="~/img/orgs/Kijasov.jpg" class="w-100 h-100">
+        @foreach(Coordinator coordinator in Model.Coordinators)
+        {
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3">
+                <div class="card border-primary h-100" style="max-width: 20rem;">
+                    <div class="card-header text-center">
+                        <span>
+                            <b>@coordinator.Name</b>
+                            <a href="@coordinator.Url" class="position-absolute top-right bi bi-box-arrow-up-right"></a>
+                        </span>
+                    </div>
+                    <div class="card-body">
+                        <img src="~/img/orgs/@coordinator.Image" class="w-100 h-100">
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3">
-            <div class="card border-primary h-100" style="max-width: 20rem;">
-                <div class="card-header text-center">
-                    <span>
-                        <b>Нургалиев Данис Карлович</b>
-                        <a href="https://kpfu.ru/Danis.Nourgaliev" class="position-absolute top-right bi bi-box-arrow-up-right"></a>
-                    </span>
-                </div>
-                <div class="card-body">
-                    <img src="~/img/orgs/Nurgaliev.jpg" class="w-100 h-100">
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3">
-            <div class="card border-primary h-100" style="max-width: 20rem;">
-                <div class="card-header text-center">
-                    <span>
-                        <b>Абрамский Михаил Михайлович</b>
-                        <a href="https://kpfu.ru/Michael.Abramsky" class="position-absolute top-right bi bi-box-arrow-up-right"></a>
-                    </span>
-                </div>
-                <div class="card-body">
-                    <img src="~/img/orgs/Abramskiy.jpg" class="w-100 h-100">
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3">
-            <div class="card border-primary h-100" style="max-width: 20rem;">
-                <div class="card-header text-center">
-                    <span>
-                        <b>Зиганшин Марат Ахмедович</b>
-                        <a href="https://kpfu.ru/Marat.Ziganshin" class="position-absolute top-right bi bi-box-arrow-up-right"></a>
-                    </span>
-                </div>
-                <div class="card-body">
-                    <img src="~/img/orgs/Ziganshin.jpeg" class="w-100 h-100">
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3">
-            <div class="card border-primary h-100" style="max-width: 20rem;">
-                <div class="card-header text-center">
-                    <span>
-                        <b>Гафуров Марат Ревгерович</b>
-                        <a href="https://kpfu.ru/Marat.Gafurov" class="position-absolute top-right bi bi-box-arrow-up-right"></a>
-                    </span>
-                </div>
-                <div class="card-body">
-                    <img src="~/img/orgs/Gafurov.jpeg" class="w-100 h-100">
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3">
-            <div class="card border-primary h-100" style="max-width: 20rem;">
-                <div class="card-header text-center">
-                    <span>
-                        <b>Чикрин Дмитрий Евгеньевич</b>
-                        <a href="https://kpfu.ru/dmitrij.chikrin" class="position-absolute top-right bi bi-box-arrow-up-right"></a>
-                    </span>
-                </div>
-                <div class="card-body">
-                    <img src="~/img/orgs/Chikrin.png" class="w-100 h-100">
-                </div>
-            </div>
-        </div>
+        }
     </div>
 </div>
 
@@ -253,36 +108,19 @@
     <hr>
     <div class="row justify-content-xs-center justify-content-sm-center justify-content-md-center justify-content-lg-center">
         <h3 class="text-center">Члены оргкомитета</h3>
-        <div class="col-lg-4 col-md-6">
-            <h5 class="title text-center"><a href="https://kpfu.ru/Ajrat.Kajumov">Каюмов Айрат Рашитович</a></h5>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <h5 class="title text-center"><a href="https://kpfu.ru/Irina.Chelnokova">Челнокова Ирина Александровна</a></h5>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <h5 class="title text-center"><a href="https://kpfu.ru/Mikhail.Varfolomeev">Варфоломеев Михаил Алексеевич</a></h5>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <h5 class="title text-center"><a href="https://kpfu.ru/ulyana.ogorodnova">Галиханова Ульяна Александровна</a></h5>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <h5 class="title text-center"><a href="https://kpfu.ru/ajrat.bilyalov">Билялов Айрат Ильдарович</a></h5>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <h5 class="title text-center"><a href="https://kpfu.ru/Anton.Kolchugin">Кольчугин Антон Николаевич</a></h5>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <h5 class="title text-center"><a href="https://kpfu.ru/Iskander.Vakhitov">Вахитов Искандер Рашидович</a></h5>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <h5 class="title text-center">Валиева Лилия Рахимулловна</h5>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <h5 class="title text-center"><a href="https://kpfu.ru/Ajdar.Hajdarov">Хайдаров Айдар Адибович</a></h5>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <h5 class="title text-center"><a href="https://kpfu.ru/garnik.abgaryan">Абгарян Гарник Владимирович</a></h5>
-        </div>
+        @foreach(Orgcom orgcom in Model.Orgcoms)
+        {
+            <div class="col-lg-4 col-md-6">
+                @if (string.IsNullOrEmpty(orgcom.Url))
+                {
+                    <h5 class="title text-center"><a>@orgcom.Name</a></h5>
+                }
+                else
+                {
+                    <h5 class="title text-center"><a href="@orgcom.Url">@orgcom.Name</a></h5>
+                }
+            </div>
+        }
     </div>
 </div>
 

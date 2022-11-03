@@ -11,8 +11,9 @@ namespace Mt22KpfuRu.Controllers
         public IActionResult Excursions() => View(DataBank.GetExcursionModel());
         public IActionResult Kazan() => View(DataBank.GetKazanModel());
         public IActionResult Living() => View(DataBank.GetMapModel());
-        public IActionResult About() => View();
+        public IActionResult About() => View(DataBank.GetAboutModel());
         public IActionResult Register() => View();
+        public IActionResult IVMIIT() => View();
         public IActionResult Sponsors() => View();
         public IActionResult Participants() => View();
     }
