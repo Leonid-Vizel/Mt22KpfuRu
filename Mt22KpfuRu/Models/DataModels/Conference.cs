@@ -1,7 +1,10 @@
-﻿namespace Mt22KpfuRu.Models;
+﻿using Mt22KpfuRu.Instruments;
 
-public class Conference
+namespace Mt22KpfuRu.Models;
+
+public class Conference : IIndexable
 {
+    public int Id { get; set; }
     public short Year { get; set; }
     public bool Program { get; set; }
     public bool Thesis { get; set; }

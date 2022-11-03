@@ -1,7 +1,10 @@
-﻿namespace Mt22KpfuRu.Models;
+﻿using Mt22KpfuRu.Instruments;
 
-public class Orgcom
+namespace Mt22KpfuRu.Models;
+
+public class Orgcom : IIndexable
 {
+    public int Id { get; set; }
     public string Name { get; set; }
     public string Url { get; set; }
 }

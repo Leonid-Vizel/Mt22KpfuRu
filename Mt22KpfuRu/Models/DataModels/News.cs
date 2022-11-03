@@ -1,6 +1,8 @@
-﻿namespace Mt22KpfuRu.Models
+﻿using Mt22KpfuRu.Instruments;
+
+namespace Mt22KpfuRu.Models
 {
-    public class News
+    public class News : IIndexable
     {
         public int Id { get; set; }
         public string Title { get; set; } = null!;

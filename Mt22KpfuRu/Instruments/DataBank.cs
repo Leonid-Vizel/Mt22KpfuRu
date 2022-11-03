@@ -73,9 +73,9 @@ public static class DataBank
 
     public static void Initialize(string mainPath)
     {
+        DateStore = new XMLStore<Date>($"{mainPath}\\Storage\\Dates.XML");
         AdminStore = new XMLStore<Admin>($"{mainPath}\\Storage\\Admins.XML");
         NewsStore = new XMLStore<News>($"{mainPath}\\Storage\\News.XML");
-        DateStore = new XMLStore<Date>($"{mainPath}\\Storage\\Dates.XML");
         FastLinkStore = new XMLStore<FastLink>($"{mainPath}\\Storage\\Links.XML");
         ProgramPartStore = new XMLStore<ProgramPart>($"{mainPath}\\Storage\\Program.XML");
         ConferenceStore = new XMLStore<Conference>($"{mainPath}\\Storage\\History.XML");

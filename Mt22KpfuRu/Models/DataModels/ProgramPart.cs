@@ -1,9 +1,11 @@
-﻿using System.Xml.Serialization;
+﻿using Mt22KpfuRu.Instruments;
+using System.Xml.Serialization;
 
 namespace Mt22KpfuRu.Models
 {
-    public class ProgramPart
+    public class ProgramPart : IIndexable
     {
+        public int Id { get; set; }
         [XmlIgnore]
         public DateOnly Date { get; set; }
         [XmlIgnore]
