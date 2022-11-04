@@ -9,6 +9,7 @@
 <div class="color-wrap">
     <div class="container pt-2 pb-3">
         <h2 class="text-light text-center">@ViewData["Title"]</h2>
+        <hr class="text-light">
         <div class="row justify-content-center">
             <div class="col-lg-12">
                 <div class="row justify-content-end mb-1">
@@ -44,7 +45,7 @@
             <div class="col-lg-12">
                 <div class="row justify-content-end mb-1">
                     <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Ключевые даты</h4></div>
-                    <div class="col-3 "><a class="btn btn-success w-100"><i class="bi bi-plus-lg"></i></a></div>
+                    <div class="col-3"><a class="btn btn-success w-100"><i class="bi bi-plus-lg"></i></a></div>
                 </div>
                 <table class="table tabletable-responsive table-bordered text-light bg-info">
                     <thead>
@@ -80,7 +81,7 @@
             <div class="col-lg-12">
                 <div class="row justify-content-end mb-1">
                     <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Быстрые ссылки</h4></div>
-                    <div class="col-3 "><a class="btn btn-success w-100"><i class="bi bi-plus-lg"></i></a></div>
+                    <div class="col-3"><a class="btn btn-success w-100"><i class="bi bi-plus-lg"></i></a></div>
                 </div>
                 <table class="table tabletable-responsive table-bordered text-light bg-info">
                     <thead>
@@ -114,7 +115,7 @@
             <div class="col-lg-12">
                 <div class="row justify-content-end mb-1">
                     <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Новости</h4></div>
-                    <div class="col-3 "><a class="btn btn-success w-100"><i class="bi bi-plus-lg"></i></a></div>
+                    <div class="col-3"><a class="btn btn-success w-100" asp-controller="Admin" asp-action="CreateNews"><i class="bi bi-plus-lg"></i></a></div>
                 </div>
                 <table class="table tabletable-responsive table-bordered text-light bg-info">
                     <thead>
@@ -139,10 +140,10 @@
                                 <td>@news.Title</td>
                                 <td>@news.Description</td>
                                 <td>@Html.Raw(news.Content)</td>
-                                <td>@news.CreateTime.ToString("dd.MM.yyyy")</td>
+                                <td>@news.CreateTime.ToString("dd.MM.yyyy HH:mm")</td>
                                 <td class="text-nowrap">
-                                    <a class="btn btn-warning text-dark"><i class="bi bi-pencil-fill"></i></a>
-                                    <a class="btn btn-danger text-dark"><i class="bi bi-trash-fill"></i></a>
+                                    <a class="btn btn-warning text-dark" asp-controller="Admin" asp-action="EditNews" asp-route-id="@news.Id"><i class="bi bi-pencil-fill"></i></a>
+                                    <a class="btn btn-danger text-dark" asp-controller="Admin" asp-action="DeleteNews" asp-route-id="@news.Id"><i class="bi bi-trash-fill"></i></a>
                                 </td>
                             </tr>
                         }
@@ -152,7 +153,7 @@
             <div class="col-lg-12">
                 <div class="row justify-content-end mb-1">
                     <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Программа конференции</h4></div>
-                    <div class="col-3 "><a class="btn btn-success w-100"><i class="bi bi-plus-lg"></i></a></div>
+                    <div class="col-3"><a class="btn btn-success w-100"><i class="bi bi-plus-lg"></i></a></div>
                 </div>
                 <table class="table tabletable-responsive table-bordered text-light bg-info">
                     <thead>
@@ -190,7 +191,7 @@
             <div class="col-lg-12">
                 <div class="row justify-content-end mb-1">
                     <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">История конференции</h4></div>
-                    <div class="col-3 "><a class="btn btn-success w-100"><i class="bi bi-plus-lg"></i></a></div>
+                    <div class="col-3"><a class="btn btn-success w-100"><i class="bi bi-plus-lg"></i></a></div>
                 </div>
                 <table class="table tabletable-responsive table-bordered text-light bg-info">
                     <thead>
@@ -228,7 +229,7 @@
             <div class="col-lg-12">
                 <div class="row justify-content-end mb-1">
                     <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Экскурсии</h4></div>
-                    <div class="col-3 "><a class="btn btn-success w-100"><i class="bi bi-plus-lg"></i></a></div>
+                    <div class="col-3"><a class="btn btn-success w-100"><i class="bi bi-plus-lg"></i></a></div>
                 </div>
                 <table class="table tabletable-responsive table-bordered text-light bg-info">
                     <thead>
@@ -275,7 +276,7 @@
             <div class="col-lg-12">
                 <div class="row justify-content-end mb-1">
                     <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Казань</h4></div>
-                    <div class="col-3 "><a class="btn btn-success w-100"><i class="bi bi-plus-lg"></i></a></div>
+                    <div class="col-3"><a class="btn btn-success w-100"><i class="bi bi-plus-lg"></i></a></div>
                 </div>
                 <table class="table tabletable-responsive table-bordered text-light bg-info">
                     <thead>
@@ -311,7 +312,7 @@
             <div class="col-lg-12">
                 <div class="row justify-content-end mb-1">
                     <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Основные научные направления</h4></div>
-                    <div class="col-3 "><a class="btn btn-success w-100"><i class="bi bi-plus-lg"></i></a></div>
+                    <div class="col-3"><a class="btn btn-success w-100"><i class="bi bi-plus-lg"></i></a></div>
                 </div>
                 <table class="table tabletable-responsive table-bordered text-light bg-info">
                     <thead>
@@ -345,7 +346,7 @@
             <div class="col-lg-12">
                 <div class="row justify-content-end mb-1">
                     <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Члены оргкомитета</h4></div>
-                    <div class="col-3 "><a class="btn btn-success w-100"><i class="bi bi-plus-lg"></i></a></div>
+                    <div class="col-3"><a class="btn btn-success w-100"><i class="bi bi-plus-lg"></i></a></div>
                 </div>
                 <table class="table tabletable-responsive table-bordered text-light bg-info">
                     <thead>
@@ -379,7 +380,7 @@
             <div class="col-lg-12">
                 <div class="row justify-content-end mb-1">
                     <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Со-председатели и координаторы</h4></div>
-                    <div class="col-3 "><a class="btn btn-success w-100"><i class="bi bi-plus-lg"></i></a></div>
+                    <div class="col-3"><a class="btn btn-success w-100"><i class="bi bi-plus-lg"></i></a></div>
                 </div>
                 <table class="table tabletable-responsive table-bordered text-light bg-info">
                     <thead>
