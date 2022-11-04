@@ -3,10 +3,24 @@
     ViewData["footer"] = true;
 }
 
+<style>
+    @@media (min-width: 768px) {
+        .bg-primary-special {
+            --bs-bg-opacity: 1;
+            background-color: rgba(var(--bs-primary-rgb),var(--bs-bg-opacity)) !important;
+        }
+    }
+    .round{
+        border-radius: 25px;
+    }
+</style>
+
 <div class="color-wrap h-100">
     <div class="container h-100 pt-2 pb-3">
-        <div class="row justify-content-md-center align-items-center h-100">
-            <div class="col-md-5 mb-5">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-7 round bg-primary pt-2 pb-4">
+                <h2 class="text-center text-light">@ViewData["Title"]</h2>
+                <hr class="text-light">
                 <form method="post">
                     <div class="mb-2">
                         <label class="form-label text-light">Логин:</label>
@@ -16,7 +30,7 @@
                         <label class="form-label text-light">Пароль:</label>
                         <input class="form-control" type="password" name="password">
                     </div>
-                    <button type="submit" class="w-100 btn btn-lg btn btn-primary">Войти</button>
+                    <button type="submit" class="w-100 btn btn-success">Войти</button>
                 </form>
             </div>
         </div>
