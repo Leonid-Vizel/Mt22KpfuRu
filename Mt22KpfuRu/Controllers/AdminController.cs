@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Mt22KpfuRu.Instruments;
 using Mt22KpfuRu.Models;
 using Mt22KpfuRu.Models.ViewModels;
@@ -33,6 +34,7 @@ namespace Mt22KpfuRu.Controllers
                 return StatusCode(401);
             }
             HttpContext.Session.SetString("Login", login);
+            HttpContext.Session.SetString("Name", foundAdmin.Name);
             return RedirectToAction("Panel", "Admin");
         }
         public IActionResult Exit()
