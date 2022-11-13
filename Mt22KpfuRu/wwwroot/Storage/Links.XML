@@ -1,1 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?><ArrayOfFastLink xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><FastLink><Id>1</Id><Name>Казань</Name><Url>/Home/Kazan</Url></FastLink><FastLink><Id>2</Id><Name>Информационное письмо</Name><Url>/docs/InfoLetter.pdf</Url></FastLink><FastLink><Id>3</Id><Name>Экскурсии</Name><Url>/Home/Excursions</Url></FastLink><FastLink><Id>4</Id><Name>Секции</Name><Url>/Home/About#Sections</Url></FastLink><FastLink><Id>5</Id><Name>Университет КФУ</Name><Url>http://kpfu.ru/</Url></FastLink><FastLink><Id>6</Id><Name>Пленарные докладчики</Name><Url>/Home/Participants</Url></FastLink><FastLink><Id>7</Id><Name>История конференции</Name><Url>/Home/Conferences</Url></FastLink></ArrayOfFastLink>
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfFastLink xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FastLink>
+    <Id>1</Id>
+    <Name>Казань</Name>
+    <Url>/Home/Kazan</Url>
+  </FastLink>
+  <FastLink>
+    <Id>2</Id>
+    <Name>Информационное письмо</Name>
+    <Url>/docs/InfoLetter.pdf</Url>
+  </FastLink>
+  <FastLink>
+    <Id>3</Id>
+    <Name>Экскурсии</Name>
+    <Url>/Home/Excursions</Url>
+  </FastLink>
+  <FastLink>
+    <Id>4</Id>
+    <Name>Секции</Name>
+    <Url>/Home/About#Sections</Url>
+  </FastLink>
+  <FastLink>
+    <Id>5</Id>
+    <Name>Университет КФУ</Name>
+    <Url>http://kpfu.ru/</Url>
+  </FastLink>
+  <FastLink>
+    <Id>6</Id>
+    <Name>Пленарные докладчики</Name>
+    <Url>/Home/Participants</Url>
+  </FastLink>
+  <FastLink>
+    <Id>7</Id>
+    <Name>История конференции</Name>
+    <Url>/Home/Conferences</Url>
+  </FastLink>
+</ArrayOfFastLink>

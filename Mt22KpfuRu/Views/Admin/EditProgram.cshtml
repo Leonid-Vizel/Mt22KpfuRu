@@ -1,0 +1,53 @@
+﻿@model ProgramPart
+@{
+    ViewData["Title"] = "Изменение части программы мероприятия";
+    ViewData["footer"] = true;
+}
+
+<style>
+    .round {
+        border-radius: 25px;
+    }
+</style>
+
+<div class="color-wrap h-100 d-flex align-items-center">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <form method="post" class="col-lg-6 col-md-8 col-sm-12 round pt-2 pb-4">
+                <h2 class="text-center text-light">@ViewData["Title"]</h2>
+                <hr class="text-light">
+                <div class="mb-1">
+                    <label class="form-label text-light" asp-for="Date"></label>
+                    <input class="form-control" type="date" asp-for="DateFromInput">
+                    <span class="text-danger" asp-validation-for="Date"></span>
+                </div>
+                <div class="mb-1">
+                    <label class="form-label text-light" asp-for="TimeStart"></label>
+                    <input class="form-control" type="time" asp-for="TimeStartFromInput">
+                    <span class="text-danger" asp-validation-for="TimeStart"></span>
+                </div>
+                <div class="mb-1">
+                    <label class="form-label text-light" asp-for="TimeEnd"></label>
+                    <input class="form-control" type="time" asp-for="TimeEndFromInput">
+                    <span class="text-danger" asp-validation-for="TimeEnd"></span>
+                </div>
+                <div class="mb-1">
+                    <label class="form-label text-light" asp-for="Name"></label>
+                    <textarea class="form-control w-100" rows="3" asp-for="Name"></textarea>
+                    <span class="text-danger" asp-validation-for="Name"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-light" asp-for="Place"></label>
+                    <textarea class="form-control w-100" rows="3" asp-for="Place"></textarea>
+                    <span class="text-danger" asp-validation-for="Place"></span>
+                </div>
+                <button class="btn btn-success w-100">Изменить</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial">
+    }

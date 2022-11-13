@@ -1,1 +1,14 @@
-﻿<h2>Ошибка аутентификации</h2>
+﻿@{
+    ViewData["Title"] = "Ошибка авторизации";
+    ViewData["Footer"] = true;
+}
+
+<div class="color-wrap h-100">
+    <div class="d-flex align-items-center justify-content-center h-100">
+        <div class="d-flex flex-column pb-5">
+            <h2 class="text-light text-center">Ошибка 401</h2>
+            <hr class="text-light mt-0 mb-2">
+            <a class="btn btn-success w-100" asp-controller="Admin" asp-action="Auth">Войти</a>
+        </div>
+    </div>
+</div>

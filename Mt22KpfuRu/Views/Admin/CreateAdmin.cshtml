@@ -1,6 +1,6 @@
-﻿@model News
+﻿@model Admin
 @{
-    ViewData["Title"] = "Изменение новости";
+    ViewData["Title"] = "Создание администратора";
     ViewData["footer"] = true;
 }
 
@@ -11,7 +11,7 @@
             background-color: rgba(var(--bs-primary-rgb),var(--bs-bg-opacity)) !important;
         }
     }
-    .round {
+    .round{
         border-radius: 25px;
     }
 </style>
@@ -23,25 +23,26 @@
                 <h2 class="text-center text-light">@ViewData["Title"]</h2>
                 <hr class="text-light">
                 <div class="mb-1">
-                    <label class="form-label text-light" asp-for="Title"></label>
-                    <input class="form-control" asp-for="Title">
-                    <span class="text-danger" asp-validation-for="Title"></span>
+                    <label class="form-label text-light" asp-for="Login"></label>
+                    <input class="form-control" asp-for="Login">
+                    <span class="text-danger" asp-validation-for="Login"></span>
                 </div>
                 <div class="mb-1">
-                    <label class="form-label text-light" asp-for="Description"></label>
-                    <textarea class="form-control w-100" rows="3" asp-for="Description"></textarea>
-                    <span class="text-danger" asp-validation-for="Description"></span>
+                    <label class="form-label text-light" asp-for="Name"></label>
+                    <input class="form-control" asp-for="Name">
+                    <span class="text-danger" asp-validation-for="Name"></span>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label text-light" asp-for="Content"></label>
-                    <textarea class="form-control w-100" rows="6" asp-for="Content"></textarea>
-                    <span class="text-danger" asp-validation-for="Content"></span>
+                    <label class="form-label text-light" asp-for="HashPassword"></label>
+                    <input class="form-control" asp-for="HashPassword" autocomplete="new-password">
+                    <span class="text-danger" asp-validation-for="HashPassword"></span>
                 </div>
-                <button class="btn btn-success w-100">Изменить</button>
+                <button class="btn btn-success w-100">Создать</button>
             </form>
         </div>
     </div>
 </div>
+
 
 @section Scripts
     {

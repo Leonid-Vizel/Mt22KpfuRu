@@ -1,20 +1,20 @@
 ﻿namespace Mt22KpfuRu.Instruments
 {
-    public class ImageLoader
+    public static class ImageLoader
     {
-        public async Task<string?> Load(IWebHostEnvironment environment, string path, IFormFile file)
+        public static async Task<string?> Load(IWebHostEnvironment environment, string path, IFormFile file)
         {
             string fileName = file.FileName;
             if (!fileName.EndsWith(".png") && !fileName.EndsWith(".jpg") && !fileName.EndsWith(".jpeg") && !fileName.EndsWith(".jfif"))
             {
                 return string.Empty;
             }
-            Guid guidForName = new Guid();
+            Guid guidForName = Guid.NewGuid();
             string extension = Path.GetExtension(fileName);
             string completePath = $"{environment.WebRootPath}{path}{guidForName}{extension}";
             while (File.Exists(completePath))
             {
-                guidForName = new Guid();
+                guidForName = Guid.NewGuid();
                 completePath = $"{environment.WebRootPath}{path}{guidForName}{extension}";
             }
             try
