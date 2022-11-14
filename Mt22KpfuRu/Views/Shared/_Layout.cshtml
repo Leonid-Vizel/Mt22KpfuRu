@@ -16,16 +16,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
 <body>
-    @if (logged)
-    {
-        <div class="w-100 bg-danger">
-            <h4 class="text-center text-light mb-0">
-                [@admin] Режим админа
-                <a asp-controller="Admin" asp-action="Exit" class="position-absolute text-light bi bi-x-lg" style="right:0;"></a>
-            </h4>
-        </div>
-    }
     <header>
+        @if (logged)
+        {
+            <div class="w-100 bg-danger">
+                <h4 class="text-center text-light mb-0">
+                    [@admin] Режим админа
+                    <a asp-controller="Admin" asp-action="Exit" class="position-absolute text-light bi bi-x-lg" style="right:0;"></a>
+                </h4>
+            </div>
+        }
         <nav class="navbar navbar-expand-xl-plus navbar-dark bg-primary">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-controller="Home" asp-action="Index">
@@ -115,7 +115,7 @@
                     <p class="text-light">
                         <strong>Почта: </strong><a class="text-light" href="mailto:info.materials21@kpfu.ru">info.materials21@kpfu.ru</a>
                         <br>
-                        <strong>Тел.: </strong><a class="text-light" href="tel:+78432387901">+7 (843) 238-79-01</a>
+                        <strong>Тел: </strong><a class="text-light" href="tel:+78432387901">+7 (843) 238-79-01</a>
                         <br>
                         <strong>Факс: </strong><a class="text-light" href="tel:+78432387901">+7 (843) 238-79-01</a>
                     </p>

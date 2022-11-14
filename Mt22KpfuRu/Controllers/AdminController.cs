@@ -334,12 +334,53 @@ namespace Mt22KpfuRu.Controllers
             return RedirectToAction("Panel", "Admin", "admins");
         }
         #endregion
+        #region Edit
+        public IActionResult EditAdmin(int id)
+        {
+            if (!HttpContext.Session.Keys.Contains("Login"))
+            {
+                return StatusCode(401);
+            }
+            Admin? foundModel = DataBank.AdminStore.List.FirstOrDefault(x => x.Id == id);
+            if (foundModel == null)
+            {
+                return NotFound();
+            }
+            return View(foundModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditAdmin(int id, string name)
+        {
+            if (!HttpContext.Session.Keys.Contains("Login"))
+            {
+                return StatusCode(401);
+            }
+            if (string.IsNullOrEmpty(name))
+            {
+                return View(new Admin() { Id = id, Name = name});
+            }
+            Admin? foundModel = DataBank.AdminStore.List.FirstOrDefault(x => x.Id == id);
+            if (foundModel == null)
+            {
+                return NotFound();
+            }
+            foundModel.Name = name;
+            DataBank.AdminStore.RewriteList();
+            return RedirectToAction("Panel", "Admin", "admins");
+        }
+        #endregion
         #region Delete
         public async Task<IActionResult> DeleteAdmin(int id)
         {
             if (!HttpContext.Session.Keys.Contains("Login"))
             {
                 return StatusCode(401);
+            }
+            if (DataBank.AdminStore.List.Count == 1)
+            {
+                return NotFound();
             }
             Admin? foundModel = DataBank.AdminStore.List.FirstOrDefault(x => x.Id == id);
             if (foundModel == null)
@@ -626,7 +667,7 @@ namespace Mt22KpfuRu.Controllers
             {
                 return View(model);
             }
-            string? result = await ImageLoader.Load(environment, "\\img\\Kazan\\", model.File);
+            string? result = await WebFileLoader.LoadImage(environment, "\\img\\Kazan\\", model.File);
             if (result == null)
             {
                 ModelState.AddModelError("File", "Ошибка записи картинки!");
@@ -644,6 +685,44 @@ namespace Mt22KpfuRu.Controllers
                 Image = result
             };
             DataBank.KazanStore.Add(place);
+            return RedirectToAction("Panel", "Admin", "kazan");
+        }
+        #endregion
+        #region Edit
+        public IActionResult EditKazanPlace(int id)
+        {
+            if (!HttpContext.Session.Keys.Contains("Login"))
+            {
+                return StatusCode(401);
+            }
+            KazanPlace? foundModel = DataBank.KazanStore.List.FirstOrDefault(x => x.Id == id);
+            if (foundModel == null)
+            {
+                return NotFound();
+            }
+            return View(foundModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditKazanPlace(KazanPlace model)
+        {
+            if (!HttpContext.Session.Keys.Contains("Login"))
+            {
+                return StatusCode(401);
+            }
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            KazanPlace? foundModel = DataBank.KazanStore.List.FirstOrDefault(x => x.Id == model.Id);
+            if (foundModel == null)
+            {
+                return NotFound();
+            }
+            foundModel.Name = model.Name;
+            foundModel.Description = model.Description;
+            DataBank.KazanStore.RewriteList();
             return RedirectToAction("Panel", "Admin", "kazan");
         }
         #endregion
@@ -692,7 +771,7 @@ namespace Mt22KpfuRu.Controllers
             {
                 return View(model);
             }
-            string? result = await ImageLoader.Load(environment, "\\img\\orgs\\", model.File);
+            string? result = await WebFileLoader.LoadImage(environment, "\\img\\orgs\\", model.File);
             if (result == null)
             {
                 ModelState.AddModelError("File", "Ошибка записи картинки!");
@@ -710,6 +789,44 @@ namespace Mt22KpfuRu.Controllers
                 Image = result
             };
             DataBank.CoordinatorStore.Add(place);
+            return RedirectToAction("Panel", "Admin", "coordinators");
+        }
+        #endregion
+        #region Edit
+        public IActionResult EditCoordinator(int id)
+        {
+            if (!HttpContext.Session.Keys.Contains("Login"))
+            {
+                return StatusCode(401);
+            }
+            Coordinator? foundModel = DataBank.CoordinatorStore.List.FirstOrDefault(x => x.Id == id);
+            if (foundModel == null)
+            {
+                return NotFound();
+            }
+            return View(foundModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditCoordinator(Coordinator model)
+        {
+            if (!HttpContext.Session.Keys.Contains("Login"))
+            {
+                return StatusCode(401);
+            }
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            Coordinator? foundModel = DataBank.CoordinatorStore.List.FirstOrDefault(x => x.Id == model.Id);
+            if (foundModel == null)
+            {
+                return NotFound();
+            }
+            foundModel.Name = model.Name;
+            foundModel.Url = model.Url;
+            DataBank.CoordinatorStore.RewriteList();
             return RedirectToAction("Panel", "Admin", "coordinators");
         }
         #endregion
@@ -758,7 +875,7 @@ namespace Mt22KpfuRu.Controllers
             {
                 return View(model);
             }
-            string? result1 = await ImageLoader.Load(environment, "\\img\\excursions\\", model.File1);
+            string? result1 = await WebFileLoader.LoadImage(environment, "\\img\\excursions\\", model.File1);
             if (result1 == null)
             {
                 ModelState.AddModelError("File", "Ошибка записи картинки!");
@@ -772,7 +889,7 @@ namespace Mt22KpfuRu.Controllers
             string? result2 = null;
             if (model.File2 != null)
             {
-                result2 = await ImageLoader.Load(environment, "\\img\\excursions\\", model.File2);
+                result2 = await WebFileLoader.LoadImage(environment, "\\img\\excursions\\", model.File2);
                 if (result2 == null)
                 {
                     ModelState.AddModelError("File", "Ошибка записи картинки!");
@@ -795,6 +912,44 @@ namespace Mt22KpfuRu.Controllers
                 place.Image2 = result2;
             }    
             DataBank.ExcursionStore.Add(place);
+            return RedirectToAction("Panel", "Admin", "excursions");
+        }
+        #endregion
+        #region Edit
+        public IActionResult EditExcursionPart(int id)
+        {
+            if (!HttpContext.Session.Keys.Contains("Login"))
+            {
+                return StatusCode(401);
+            }
+            ExcursionPart? foundModel = DataBank.ExcursionStore.List.FirstOrDefault(x => x.Id == id);
+            if (foundModel == null)
+            {
+                return NotFound();
+            }
+            return View(foundModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditExcursionPart(ExcursionPart model)
+        {
+            if (!HttpContext.Session.Keys.Contains("Login"))
+            {
+                return StatusCode(401);
+            }
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            ExcursionPart? foundModel = DataBank.ExcursionStore.List.FirstOrDefault(x => x.Id == model.Id);
+            if (foundModel == null)
+            {
+                return NotFound();
+            }
+            foundModel.Name = model.Name;
+            foundModel.Description = model.Description;
+            DataBank.ExcursionStore.RewriteList();
             return RedirectToAction("Panel", "Admin", "excursions");
         }
         #endregion

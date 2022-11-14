@@ -70,5 +70,11 @@
     "inputFiles": [
       "wwwroot/css/AdminPanelStyle.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/css/FormStyle.min.css",
+    "inputFiles": [
+      "wwwroot/css/FormStyle.css"
+    ]
   }
 ]

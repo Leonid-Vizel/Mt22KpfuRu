@@ -34,6 +34,7 @@
                                 <td>@admin.Login</td>
                                 <td>@admin.Name</td>
                                 <td class="text-nowrap">
+                                    <a class="btn btn-warning text-dark" asp-controller="Admin" asp-action="EditAdmin" asp-route-id="@admin.Id"><i class="bi bi-pencil-fill"></i></a>
                                     <a class="btn btn-danger text-dark" asp-controller="Admin" asp-action="DeleteAdmin" asp-route-id="@admin.Id"><i class="bi bi-trash-fill"></i></a>
                                 </td>
                             </tr>
@@ -263,6 +264,7 @@
                                     }
                                 </td>
                                 <td class="text-nowrap">
+                                    <a class="btn btn-warning text-dark" asp-controller="Admin" asp-action="EditExcursionPart" asp-route-id="@part.Id"><i class="bi bi-pencil-fill"></i></a>
                                     <a class="btn btn-danger text-dark" asp-controller="Admin" asp-action="DeleteExcursionPart" asp-route-id="@part.Id"><i class="bi bi-trash-fill"></i></a>
                                 </td>
                             </tr>
@@ -298,6 +300,7 @@
                                 <td>@Html.Raw(place.Description)</td>
                                 <td><a class="text-light" target="_blank" href="~/img/Kazan/@place.Image">Посмотреть</a></td>
                                 <td class="text-nowrap">
+                                    <a class="btn btn-warning text-dark" asp-controller="Admin" asp-action="EditKazanPlace" asp-route-id="@place.Id"><i class="bi bi-pencil-fill"></i></a>
                                     <a class="btn btn-danger text-dark" asp-controller="Admin" asp-action="DeleteKazanPlace" asp-route-id="@place.Id"><i class="bi bi-trash-fill"></i></a>
                                 </td>
                             </tr>
@@ -401,6 +404,7 @@
                                 <td><a class="text-light" href="@coordinator.Url">Ссылка</a></td>
                                 <td><a class="text-light" target="_blank" href="~/img/orgs/@coordinator.Image">Посмотреть</a></td>
                                 <td class="text-nowrap">
+                                    <a class="btn btn-warning text-dark" asp-controller="Admin" asp-action="EditCoordinator" asp-route-id="@coordinator.Id"><i class="bi bi-pencil-fill"></i></a>
                                     <a class="btn btn-danger text-dark" asp-controller="Admin" asp-action="DeleteCoordinator" asp-route-id="@coordinator.Id"><i class="bi bi-trash-fill"></i></a>
                                 </td>
                             </tr>

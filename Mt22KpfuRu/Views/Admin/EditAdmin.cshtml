@@ -1,6 +1,6 @@
-﻿@model FastLink
+﻿@model Admin
 @{
-    ViewData["Title"] = "Создание быстрой ссылки";
+    ViewData["Title"] = "Изменение имени администратора";
     ViewData["footer"] = true;
 }
 <link rel="stylesheet" href="~/css/FormStyle.min.css" asp-append-version="true">
@@ -16,12 +16,7 @@
                     <input class="form-control" asp-for="Name">
                     <span class="text-danger" asp-validation-for="Name"></span>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label text-light" asp-for="Url"></label>
-                    <input class="form-control" asp-for="Url">
-                    <span class="text-danger" asp-validation-for="Url"></span>
-                </div>
-                <button class="btn btn-success w-100">Создать</button>
+                <button class="btn btn-success w-100">Изменить</button>
             </form>
         </div>
     </div>
