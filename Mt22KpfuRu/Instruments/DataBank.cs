@@ -22,6 +22,14 @@ public static class DataBank
                     Description = "Появилось зеркало на сайте университета",
                     Content = "С информацией о проведении Школы-конференции в 2022 г. и регистрацией можно ознакомиться по ссылке: <a href=\"https://kpfu.ru/science/nauchno-issledovatelskaya-rabota-studentov-nirs/materialy-i-tehnologii-xxi-veka-xxi-veka\">Материалы и технологии XXI века</a>",
                     CreateTime = new DateTime(2022,10,29,17,12,00)
+                },
+                new News()
+                {
+                    Id = 2,
+                    Title = "Продление регистрации",
+                    Description = "Регистрация проделена до 18 ноября включительно",
+                    Content = "<a href=\"https://kpfu.ru/science/nauchno-issledovatelskaya-rabota-studentov-nirs/materialy-i-tehnologii-xxi-veka-xxi-veka/registraciya\">Регистрация</a> продлена <strong>до 18.11.2022 включительно</strong>.",
+                    CreateTime = new DateTime(2022,11,11,19,15,00)
                 }
             };
         List<Date> dateList = new List<Date>()
@@ -34,7 +42,7 @@ public static class DataBank
                 },
                 new Date()
                 {
-                    DateTime = new DateTime(2022,11,12),
+                    DateTime = new DateTime(2022,11,18),
                     Name = "Конец регистрации",
                     ShowTime = false
                 },
