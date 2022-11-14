@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfConference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Conference>
+    <Id>1</Id>
+    <Year>2021</Year>
+    <Program>true</Program>
+    <Thesis>true</Thesis>
+    <Winners>true</Winners>
+  </Conference>
+  <Conference>
+    <Id>2</Id>
+    <Year>2018</Year>
+    <Program>true</Program>
+    <Thesis>true</Thesis>
+    <Winners>true</Winners>
+  </Conference>
+  <Conference>
+    <Id>3</Id>
+    <Year>2016</Year>
+    <Program>true</Program>
+    <Thesis>true</Thesis>
+    <Winners>false</Winners>
+  </Conference>
+</ArrayOfConference>

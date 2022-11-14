@@ -1,0 +1,420 @@
+﻿@using Mt22KpfuRu.Instruments;
+@{
+    int counter = 0;
+    ViewData["Title"] = "Панель администратора";
+    ViewData["footer"] = true;
+}
+<link rel="stylesheet" href="~/css/AdminPanelStyle.min.css" asp-append-version="true">
+
+<div class="color-wrap">
+    <div class="container pt-2 pb-3">
+        <h2 class="text-light text-center">@ViewData["Title"]</h2>
+        <hr class="text-light">
+        <div class="row justify-content-center">
+            <div class="col-lg-12" id="admins">
+                <div class="row justify-content-end mb-1">
+                    <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Администраторы</h4></div>
+                    <div class="col-3"><a class="btn btn-success w-100 w-100" asp-controller="Admin" asp-action="CreateAdmin"><i class="bi bi-plus-lg"></i></a></div>
+                </div>
+                <table class="table tabletable-responsive table-bordered text-light bg-info">
+                    <thead>
+                        <tr class="cell-centered">
+                            <th scope="col">#</th>
+                            <th scope="col">Логин</th>
+                            <th scope="col">Имя</th>
+                            <th scope="col">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Admin admin in DataBank.AdminStore.List)
+                        {
+                            counter++;
+                            <tr class="cell-centered">
+                                <td>@counter</td>
+                                <td>@admin.Login</td>
+                                <td>@admin.Name</td>
+                                <td class="text-nowrap">
+                                    <a class="btn btn-warning text-dark" asp-controller="Admin" asp-action="EditAdmin" asp-route-id="@admin.Id"><i class="bi bi-pencil-fill"></i></a>
+                                    <a class="btn btn-danger text-dark" asp-controller="Admin" asp-action="DeleteAdmin" asp-route-id="@admin.Id"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div> @*DONE*@
+            <div class="col-lg-12" id="dates">
+                <div class="row justify-content-end mb-1">
+                    <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Ключевые даты</h4></div>
+                    <div class="col-3"><a class="btn btn-success w-100" asp-controller="Admin" asp-action="CreateDate"><i class="bi bi-plus-lg"></i></a></div>
+                </div>
+                <table class="table tabletable-responsive table-bordered text-light bg-info">
+                    <thead>
+                        <tr class="cell-centered">
+                            <th scope="col">#</th>
+                            <th scope="col">Дата</th>
+                            <th scope="col">Время</th>
+                            <th scope="col">Событие</th>
+                            <th scope="col">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            counter = 0;
+                        }
+                        @foreach (Date date in DataBank.DateStore.List)
+                        {
+                            counter++;
+                            <tr class="cell-centered">
+                                <td>@counter</td>
+                                <td>@date.DateTime.ToString("d MMMM yyyy HH:mm")</td>
+                                <td>@(date.ShowTime ? "Показано" : "Скрыто")</td>
+                                <td>@date.Name</td>
+                                <td class="text-nowrap">
+                                    <a class="btn btn-warning text-dark" asp-controller="Admin" asp-action="EditDate" asp-route-id="@date.Id"><i class="bi bi-pencil-fill"></i></a>
+                                    <a class="btn btn-danger text-dark" asp-controller="Admin" asp-action="DeleteDate" asp-route-id="@date.Id"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div> @*DONE*@
+            <div class="col-lg-12" id="fastlinks">
+                <div class="row justify-content-end mb-1">
+                    <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Быстрые ссылки</h4></div>
+                    <div class="col-3"><a class="btn btn-success w-100" asp-controller="Admin" asp-action="CreateFastLink"><i class="bi bi-plus-lg"></i></a></div>
+                </div>
+                <table class="table tabletable-responsive table-bordered text-light bg-info">
+                    <thead>
+                        <tr class="cell-centered">
+                            <th scope="col">#</th>
+                            <th scope="col">Описание</th>
+                            <th scope="col">Ссылка</th>
+                            <th scope="col">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            counter = 0;
+                        }
+                        @foreach (FastLink link in DataBank.FastLinkStore.List)
+                        {
+                            counter++;
+                            <tr class="cell-centered">
+                                <td>@counter</td>
+                                <td>@link.Name</td>
+                                <td><a class="text-light" href="@link.Url">Ссылка</a></td>
+                                <td class="text-nowrap">
+                                    <a class="btn btn-warning text-dark" asp-controller="Admin" asp-action="EditFastLink" asp-route-id="@link.Id"><i class="bi bi-pencil-fill"></i></a>
+                                    <a class="btn btn-danger text-dark" asp-controller="Admin" asp-action="DeleteFastLink" asp-route-id="@link.Id"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div> @*DONE*@
+            <div class="col-lg-12" id="news">
+                <div class="row justify-content-end mb-1">
+                    <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Новости</h4></div>
+                    <div class="col-3"><a class="btn btn-success w-100" asp-controller="Admin" asp-action="CreateNews"><i class="bi bi-plus-lg"></i></a></div>
+                </div>
+                <table class="table tabletable-responsive table-bordered text-light bg-info">
+                    <thead>
+                        <tr class="cell-centered">
+                            <th scope="col">#</th>
+                            <th scope="col">Заголовок</th>
+                            <th scope="col">Описание</th>
+                            <th scope="col">Содержание</th>
+                            <th scope="col">Время создания</th>
+                            <th scope="col">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            counter = 0;
+                        }
+                        @foreach (News news in DataBank.NewsStore.List.OrderByDescending(x => x.CreateTime))
+                        {
+                            counter++;
+                            <tr class="cell-centered">
+                                <td>@counter</td>
+                                <td>@news.Title</td>
+                                <td>@news.Description</td>
+                                <td>@Html.Raw(news.Content)</td>
+                                <td>@news.CreateTime.ToString("dd.MM.yyyy HH:mm")</td>
+                                <td class="text-nowrap">
+                                    <a class="btn btn-warning text-dark" asp-controller="Admin" asp-action="EditNews" asp-route-id="@news.Id"><i class="bi bi-pencil-fill"></i></a>
+                                    <a class="btn btn-danger text-dark" asp-controller="Admin" asp-action="DeleteNews" asp-route-id="@news.Id"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div> @*DONE*@
+            <div class="col-lg-12" id="program">
+                <div class="row justify-content-end mb-1">
+                    <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Программа конференции</h4></div>
+                    <div class="col-3"><a class="btn btn-success w-100" asp-controller="Admin" asp-action="CreateProgram"><i class="bi bi-plus-lg"></i></a></div>
+                </div>
+                <table class="table tabletable-responsive table-bordered text-light bg-info">
+                    <thead>
+                        <tr class="cell-centered">
+                            <th scope="col">#</th>
+                            <th scope="col">Дата</th>
+                            <th scope="col">Период</th>
+                            <th scope="col">Событие</th>
+                            <th scope="col">Место</th>
+                            <th scope="col">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            counter = 0;
+                        }
+                        @foreach (ProgramPart part in DataBank.ProgramPartStore.List.OrderBy(x => x.Date).ThenBy(x => x.TimeStart))
+                        {
+                            counter++;
+                            <tr class="cell-centered">
+                                <td>@counter</td>
+                                <td>@part.Date.ToString("d MMMM yyyy")</td>
+                                <td>@part.TimeStart.ToString("HH:mm") - @part.TimeEnd.ToString("HH:mm")</td>
+                                <td>@Html.Raw(part.Name)</td>
+                                <td>@Html.Raw(part.Place)</td>
+                                <td class="text-nowrap">
+                                    <a class="btn btn-warning text-dark" asp-controller="Admin" asp-action="EditProgram" asp-route-id="@part.Id"><i class="bi bi-pencil-fill"></i></a>
+                                    <a class="btn btn-danger text-dark" asp-controller="Admin" asp-action="DeleteProgram" asp-route-id="@part.Id"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div> @*DONE*@
+            <div class="col-lg-12" id="history">
+                <div class="row justify-content-end mb-1">
+                    <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">История конференции</h4></div>
+                    <div class="col-3"><a class="btn btn-success w-100" asp-controller="Admin" asp-action="CreateConference"><i class="bi bi-plus-lg"></i></a></div>
+                </div>
+                <table class="table tabletable-responsive table-bordered text-light bg-info">
+                    <thead>
+                        <tr class="cell-centered">
+                            <th scope="col">#</th>
+                            <th scope="col">Год</th>
+                            <th scope="col">Программа</th>
+                            <th scope="col">Тезисы</th>
+                            <th scope="col">Победители</th>
+                            <th scope="col">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            counter = 0;
+                        }
+                        @foreach (Conference conference in DataBank.ConferenceStore.List.OrderByDescending(x => x.Year))
+                        {
+                            counter++;
+                            <tr class="cell-centered">
+                                <td>@counter</td>
+                                <td>@conference.Year</td>
+                                <td>@(conference.Program ? "Есть" : "Нет")</td>
+                                <td>@(conference.Thesis ? "Есть" : "Нет")</td>
+                                <td>@(conference.Winners ? "Есть" : "Нет")</td>
+                                <td class="text-nowrap">
+                                    <a class="btn btn-danger text-dark" asp-controller="Admin" asp-action="DeleteConference" asp-route-id="@conference.Id"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-12" id="excursions">
+                <div class="row justify-content-end mb-1">
+                    <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Экскурсии</h4></div>
+                    <div class="col-3"><a class="btn btn-success w-100" asp-controller="Admin" asp-action="CreateExcursionPart"><i class="bi bi-plus-lg"></i></a></div>
+                </div>
+                <table class="table tabletable-responsive table-bordered text-light bg-info">
+                    <thead>
+                        <tr class="cell-centered">
+                            <th scope="col">#</th>
+                            <th scope="col">Заголовок</th>
+                            <th scope="col">Описание</th>
+                            <th scope="col">Картинка 1</th>
+                            <th scope="col">Картинка 2</th>
+                            <th scope="col">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            counter = 0;
+                        }
+                        @foreach (ExcursionPart part in DataBank.ExcursionStore.List)
+                        {
+                            counter++;
+                            <tr class="cell-centered">
+                                <td>@counter</td>
+                                <td>@part.Name</td>
+                                <td>@Html.Raw(part.Description)</td>
+                                <td><a class="text-light" target="_blank" href="~/img/excursions/@part.Image1">Посмотреть</a></td>
+                                <td>
+                                    @if (part.Image2 == null)
+                                    {
+                                        @: Не загружена
+                                    }
+                                    else
+                                    {
+                                        <a class="text-light" target="_blank" href="~/img/excursions/@part.Image2">Посмотреть</a>
+                                    }
+                                </td>
+                                <td class="text-nowrap">
+                                    <a class="btn btn-warning text-dark" asp-controller="Admin" asp-action="EditExcursionPart" asp-route-id="@part.Id"><i class="bi bi-pencil-fill"></i></a>
+                                    <a class="btn btn-danger text-dark" asp-controller="Admin" asp-action="DeleteExcursionPart" asp-route-id="@part.Id"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div> @*DONE*@
+            <div class="col-lg-12" id="kazan">
+                <div class="row justify-content-end mb-1">
+                    <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Казань</h4></div>
+                    <div class="col-3"><a class="btn btn-success w-100" asp-controller="Admin" asp-action="CreateKazanPlace"><i class="bi bi-plus-lg"></i></a></div>
+                </div>
+                <table class="table tabletable-responsive table-bordered text-light bg-info">
+                    <thead>
+                        <tr class="cell-centered">
+                            <th scope="col">#</th>
+                            <th scope="col">Заголовок</th>
+                            <th scope="col">Описание</th>
+                            <th scope="col">Картинка</th>
+                            <th scope="col">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            counter = 0;
+                        }
+                        @foreach (KazanPlace place in DataBank.KazanStore.List)
+                        {
+                            counter++;
+                            <tr class="cell-centered">
+                                <td>@counter</td>
+                                <td>@place.Name</td>
+                                <td>@Html.Raw(place.Description)</td>
+                                <td><a class="text-light" target="_blank" href="~/img/Kazan/@place.Image">Посмотреть</a></td>
+                                <td class="text-nowrap">
+                                    <a class="btn btn-warning text-dark" asp-controller="Admin" asp-action="EditKazanPlace" asp-route-id="@place.Id"><i class="bi bi-pencil-fill"></i></a>
+                                    <a class="btn btn-danger text-dark" asp-controller="Admin" asp-action="DeleteKazanPlace" asp-route-id="@place.Id"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div> @*DONE*@
+            <div class="col-lg-12" id="thesis">
+                <div class="row justify-content-end mb-1">
+                    <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Основные научные направления</h4></div>
+                    <div class="col-3"><a class="btn btn-success w-100" asp-controller="Admin" asp-action="CreateThesis"><i class="bi bi-plus-lg"></i></a></div>
+                </div>
+                <table class="table tabletable-responsive table-bordered text-light bg-info">
+                    <thead>
+                        <tr class="cell-centered">
+                            <th scope="col">#</th>
+                            <th scope="col">Заголовок</th>
+                            <th scope="col">Описание</th>
+                            <th scope="col">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            counter = 0;
+                        }
+                        @foreach (Thesis thesis in DataBank.ThesisStore.List)
+                        {
+                            counter++;
+                            <tr class="cell-centered">
+                                <td>@counter</td>
+                                <td>@thesis.Name</td>
+                                <td>@thesis.Description</td>
+                                <td class="text-nowrap">
+                                    <a class="btn btn-warning text-dark" asp-controller="Admin" asp-action="EditThesis" asp-route-id="@thesis.Id"><i class="bi bi-pencil-fill"></i></a>
+                                    <a class="btn btn-danger text-dark" asp-controller="Admin" asp-action="DeleteThesis" asp-route-id="@thesis.Id"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div> @*DONE*@
+            <div class="col-lg-12" id="orgcoms">
+                <div class="row justify-content-end mb-1">
+                    <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Члены оргкомитета</h4></div>
+                    <div class="col-3"><a class="btn btn-success w-100" asp-controller="Admin" asp-action="CreateOrgcom"><i class="bi bi-plus-lg"></i></a></div>
+                </div>
+                <table class="table tabletable-responsive table-bordered text-light bg-info">
+                    <thead>
+                        <tr class="cell-centered">
+                            <th scope="col">#</th>
+                            <th scope="col">ФИО</th>
+                            <th scope="col">Ссылка</th>
+                            <th scope="col">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            counter = 0;
+                        }
+                        @foreach (Orgcom orgcom in DataBank.OrgcomStore.List)
+                        {
+                            counter++;
+                            <tr class="cell-centered">
+                                <td>@counter</td>
+                                <td>@orgcom.Name</td>
+                                <td><a class="text-light" href="@orgcom.Url">Ссылка</a></td>
+                                <td class="text-nowrap">
+                                    <a class="btn btn-warning text-dark" asp-controller="Admin" asp-action="EditOrgcom" asp-route-id="@orgcom.Id"><i class="bi bi-pencil-fill"></i></a>
+                                    <a class="btn btn-danger text-dark" asp-controller="Admin" asp-action="DeleteOrgcom" asp-route-id="@orgcom.Id"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div> @*DONE*@
+            <div class="col-lg-12" id="coordinators">
+                <div class="row justify-content-end mb-1">
+                    <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Со-председатели и координаторы</h4></div>
+                    <div class="col-3"><a class="btn btn-success w-100" asp-controller="Admin" asp-action="CreateCoordinator"><i class="bi bi-plus-lg"></i></a></div>
+                </div>
+                <table class="table tabletable-responsive table-bordered text-light bg-info">
+                    <thead>
+                        <tr class="cell-centered">
+                            <th scope="col">#</th>
+                            <th scope="col">ФИО</th>
+                            <th scope="col">Ссылка</th>
+                            <th scope="col">Картинка</th>
+                            <th scope="col">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            counter = 0;
+                        }
+                        @foreach (Coordinator coordinator in DataBank.CoordinatorStore.List)
+                        {
+                            counter++;
+                            <tr class="cell-centered">
+                                <td>@counter</td>
+                                <td>@coordinator.Name</td>
+                                <td><a class="text-light" href="@coordinator.Url">Ссылка</a></td>
+                                <td><a class="text-light" target="_blank" href="~/img/orgs/@coordinator.Image">Посмотреть</a></td>
+                                <td class="text-nowrap">
+                                    <a class="btn btn-warning text-dark" asp-controller="Admin" asp-action="EditCoordinator" asp-route-id="@coordinator.Id"><i class="bi bi-pencil-fill"></i></a>
+                                    <a class="btn btn-danger text-dark" asp-controller="Admin" asp-action="DeleteCoordinator" asp-route-id="@coordinator.Id"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div> @*DONE*@
+            <div class="col-lg-12">
+                <a class="btn btn-danger w-100" asp-controller="Admin" asp-action="Exit">Выход из панели</a>
+            </div>
+        </div>
+    </div>
+</div>

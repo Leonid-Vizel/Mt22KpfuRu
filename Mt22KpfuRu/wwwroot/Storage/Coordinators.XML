@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCoordinator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Coordinator>
+    <Id>1</Id>
+    <Name>Таюрский Дмитрий Альбертович</Name>
+    <Url>https://kpfu.ru/Dmitry.Tayurskii</Url>
+    <Image>Tajurskiy.jpg</Image>
+  </Coordinator>
+  <Coordinator>
+    <Id>2</Id>
+    <Name>Киясов Андрей Павлович</Name>
+    <Url>https://kpfu.ru/andrej.kiyasov</Url>
+    <Image>Kijasov.jpg</Image>
+  </Coordinator>
+  <Coordinator>
+    <Id>3</Id>
+    <Name>Нургалиев Данис Карлович</Name>
+    <Url>https://kpfu.ru/Danis.Nourgaliev</Url>
+    <Image>Nurgaliev.jpg</Image>
+  </Coordinator>
+  <Coordinator>
+    <Id>4</Id>
+    <Name>Абрамский Михаил Михайлович</Name>
+    <Url>https://kpfu.ru/Michael.Abramsky</Url>
+    <Image>Abramskiy.jpg</Image>
+  </Coordinator>
+  <Coordinator>
+    <Id>5</Id>
+    <Name>Зиганшин Марат Ахмедович</Name>
+    <Url>https://kpfu.ru/Marat.Ziganshin</Url>
+    <Image>Ziganshin.jpeg</Image>
+  </Coordinator>
+  <Coordinator>
+    <Id>6</Id>
+    <Name>Гафуров Марат Ревгерович</Name>
+    <Url>https://kpfu.ru/Marat.Gafurov</Url>
+    <Image>Gafurov.jpeg</Image>
+  </Coordinator>
+  <Coordinator>
+    <Id>7</Id>
+    <Name>Чикрин Дмитрий Евгеньевич</Name>
+    <Url>https://kpfu.ru/dmitrij.chikrin</Url>
+    <Image>Chikrin.png</Image>
+  </Coordinator>
+</ArrayOfCoordinator>

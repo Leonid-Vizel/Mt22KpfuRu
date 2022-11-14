@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Вход в систему";
+    ViewData["footer"] = true;
+}
+<link rel="stylesheet" href="~/css/FormStyle.min.css" asp-append-version="true">
+
+<div class="color-wrap h-100">
+    <div class="container h-100 pt-2 pb-3">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-7 round bg-primary pt-2 pb-4">
+                <h2 class="text-center text-light">@ViewData["Title"]</h2>
+                <hr class="text-light">
+                <form method="post">
+                    <div class="mb-2">
+                        <label class="form-label text-light">Логин:</label>
+                        <input class="form-control" type="text" name="login">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-light">Пароль:</label>
+                        <input class="form-control" type="password" name="password">
+                    </div>
+                    <button type="submit" class="w-100 btn btn-success">Войти</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,12 +1,13 @@
 using Mt22KpfuRu.Instruments;
+using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
-DataBank.Preset();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddSession();
 var app = builder.Build();
-
+app.UseSession();
+DataBank.Initialize(builder.Environment.WebRootPath);
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -14,6 +15,21 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+//Static storage protection
+app.UseStaticFiles(new StaticFileOptions()
+{
+    OnPrepareResponse = ctx =>
+    {
+        if (ctx.File.PhysicalPath.Contains("Storage"))
+        {
+            ctx.Context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+            ctx.Context.Response.ContentLength = 0;
+            ctx.Context.Response.Body = Stream.Null;
+            ctx.Context.Response.Headers.Add("Cache-Control", "no-store");
+        }
+    }
+});
+app.UseStatusCodePagesWithRedirects("~/Error/StatusCode/{0}");
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

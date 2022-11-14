@@ -1,0 +1,34 @@
+﻿@model KazanPlace
+@{
+    ViewData["Title"] = "Изменение карточки о достопримечательности Казани";
+    ViewData["footer"] = true;
+}
+<link rel="stylesheet" href="~/css/FormStyle.min.css" asp-append-version="true">
+
+<div class="color-wrap h-100 d-flex align-items-center">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <form method="post" enctype="multipart/form-data" class="col-lg-6 col-md-8 col-sm-12 round bg-primary-special pt-2 pb-4">
+                <h2 class="text-center text-light">@ViewData["Title"]</h2>
+                <hr class="text-light">
+                <div class="mb-1">
+                    <label class="form-label text-light" asp-for="Name"></label>
+                    <input class="form-control" asp-for="Name">
+                    <span class="text-danger" asp-validation-for="Name"></span>
+                </div>
+                <div class="mb-1">
+                    <label class="form-label text-light" asp-for="Description"></label>
+                    <textarea class="form-control w-100" rows="3" asp-for="Description"></textarea>
+                    <span class="text-danger" asp-validation-for="Description"></span>
+                </div>
+                <button class="btn btn-success w-100">Изменить</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial">
+    }
