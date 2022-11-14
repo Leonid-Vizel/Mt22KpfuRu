@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Mt22KpfuRu.Instruments;
 using Mt22KpfuRu.Models;
 using Mt22KpfuRu.Models.ViewModels;
@@ -976,6 +975,137 @@ namespace Mt22KpfuRu.Controllers
                 System.IO.File.Delete($"{filePath}\\{foundModel.Image2}");
             }
             return RedirectToAction("Panel", "Admin", "excursions");
+        }
+        #endregion
+        #endregion
+        #region Conference
+        #region Create
+        public IActionResult CreateConference()
+        {
+            if (!HttpContext.Session.Keys.Contains("Login"))
+            {
+                return StatusCode(401);
+            }
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateConference(ConferenceCreateModel model)
+        {
+            if (!HttpContext.Session.Keys.Contains("Login"))
+            {
+                return StatusCode(401);
+            }
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            if (DataBank.ConferenceStore.List.Any(x=>x.Year == model.Year))
+            {
+                ModelState.AddModelError("Year","Запись с таком годом уже существует!");
+                return View(model);
+            }
+            if (model.Year < 1990)
+            {
+                ModelState.AddModelError("Year", "Год должен быть позднее 1990!");
+                return View(model);
+            }
+            if (model.File1 == null && model.File2 == null && model.File3 == null)
+            {
+                ModelState.AddModelError("File1", "Прикрепите хотя бы один из файлов!");
+                ModelState.AddModelError("File2", "Прикрепите хотя бы один из файлов!");
+                ModelState.AddModelError("File3", "Прикрепите хотя бы один из файлов!");
+                return View(model);
+            }
+            if (model.File1 != null && !model.File1.FileName.EndsWith(".pdf"))
+            {
+                ModelState.AddModelError("File1", "Укажите файл формата PDF!");
+                return View(model);
+            }
+            if (model.File2 != null && !model.File2.FileName.EndsWith(".pdf"))
+            {
+                ModelState.AddModelError("File2", "Укажите файл формата PDF!");
+                return View(model);
+            }
+            if (model.File3 != null && !model.File3.FileName.EndsWith(".pdf"))
+            {
+                ModelState.AddModelError("File3", "Укажите файл формата PDF!");
+                return View(model);
+            }
+
+            Directory.CreateDirectory($"{environment.WebRootPath}\\docs\\history\\{model.Year}");
+            Conference conference = new Conference()
+            {
+                Year = model.Year
+            };
+            if (model.File1 != null)
+            {
+                try
+                {
+                    using (FileStream imageCreateStream = new FileStream($"{environment.WebRootPath}\\docs\\history\\{model.Year}\\Program.pdf", FileMode.Create))
+                    {
+                        await model.File1.CopyToAsync(imageCreateStream);
+                    }
+                }
+                catch
+                {
+                    ModelState.AddModelError("File1", "Ошибка записи файла!");
+                    return View(model);
+                }
+                conference.Program = true;
+            }
+            if (model.File2 != null)
+            {
+                try
+                {
+                    using (FileStream imageCreateStream = new FileStream($"{environment.WebRootPath}\\docs\\history\\{model.Year}\\Thesis.pdf", FileMode.Create))
+                    {
+                        await model.File2.CopyToAsync(imageCreateStream);
+                    }
+                }
+                catch
+                {
+                    ModelState.AddModelError("File2", "Ошибка записи файла!");
+                    return View(model);
+                }
+                conference.Thesis = true;
+            }
+            if (model.File3 != null)
+            {
+                try
+                {
+                    using (FileStream imageCreateStream = new FileStream($"{environment.WebRootPath}\\docs\\history\\{model.Year}\\Winners.pdf", FileMode.Create))
+                    {
+                        await model.File3.CopyToAsync(imageCreateStream);
+                    }
+                }
+                catch
+                {
+                    ModelState.AddModelError("File3", "Ошибка записи файла!");
+                    return View(model);
+                }
+                conference.Winners = true;
+            }
+            DataBank.ConferenceStore.Add(conference);
+            return RedirectToAction("Panel", "Admin", "history");
+        }
+        #endregion
+        #region Delete
+        public IActionResult DeleteConference(int id)
+        {
+            if (!HttpContext.Session.Keys.Contains("Login"))
+            {
+                return StatusCode(401);
+            }
+            Conference? foundModel = DataBank.ConferenceStore.List.FirstOrDefault(x => x.Id == id);
+            if (foundModel == null)
+            {
+                return NotFound();
+            }
+            DataBank.ConferenceStore.Delete(foundModel);
+            Directory.Delete($"{environment.WebRootPath}\\docs\\history\\{foundModel.Year}", true);
+            return RedirectToAction("Panel", "Admin", "history");
         }
         #endregion
         #endregion

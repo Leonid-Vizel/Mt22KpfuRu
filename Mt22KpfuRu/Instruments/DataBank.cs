@@ -37,7 +37,7 @@ public static class DataBank
     {
         return new ConferencesModel()
         {
-            Conferences = ConferenceStore.List
+            Conferences = ConferenceStore.List.OrderByDescending(x=>x.Year).ToList()
         };
     }
     public static KazanModel GetKazanModel()
