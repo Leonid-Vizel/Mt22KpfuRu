@@ -1,4 +1,4 @@
-﻿using Mt22KpfuRu.Models;
+using Mt22KpfuRu.Models;
 using X.PagedList;
 
 namespace Mt22KpfuRu.Instruments;
