@@ -29,7 +29,7 @@ app.UseStaticFiles(new StaticFileOptions()
         }
     }
 });
-app.UseStatusCodePagesWithRedirects("~/Error/StatusCode/{0}");
+app.UseStatusCodePagesWithReExecute("/Error/StatusCode/{0}");
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
