@@ -13,6 +13,11 @@
                 <h2 class="text-center text-light">@ViewData["Title"]</h2>
                 <hr class="text-light">
                 <div class="mb-1">
+                    <label class="form-label text-light" asp-for="Year"></label>
+                    <input class="form-control" asp-for="Year">
+                    <span class="text-danger" asp-validation-for="Year"></span>
+                </div>
+                <div class="mb-1">
                     <label class="form-label text-light" asp-for="File1"></label>
                     <input class="form-control" type="file" asp-for="File1">
                     <span class="text-danger" asp-validation-for="File1"></span>

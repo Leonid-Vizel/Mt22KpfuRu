@@ -73,16 +73,17 @@ public static class DataBank
 
     public static void Initialize(string mainPath)
     {
-        DateStore = new XMLStore<Date>($"{mainPath}\\Storage\\Dates.XML");
-        AdminStore = new XMLStore<Admin>($"{mainPath}\\Storage\\Admins.XML");
-        NewsStore = new XMLStore<News>($"{mainPath}\\Storage\\News.XML");
-        FastLinkStore = new XMLStore<FastLink>($"{mainPath}\\Storage\\Links.XML");
-        ProgramPartStore = new XMLStore<ProgramPart>($"{mainPath}\\Storage\\Program.XML");
-        ConferenceStore = new XMLStore<Conference>($"{mainPath}\\Storage\\History.XML");
-        KazanStore = new XMLStore<KazanPlace>($"{mainPath}\\Storage\\Kazan.XML");
-        ExcursionStore = new XMLStore<ExcursionPart>($"{mainPath}\\Storage\\Excursion.XML");
-        ThesisStore = new XMLStore<Thesis>($"{mainPath}\\Storage\\Thesis.XML");
-        OrgcomStore = new XMLStore<Orgcom>($"{mainPath}\\Storage\\OrgComs.XML");
-        CoordinatorStore = new XMLStore<Coordinator>($"{mainPath}\\Storage\\Coordinators.XML");
+        string path = Path.Combine(mainPath, "Storage");
+        DateStore = new XMLStore<Date>(Path.Combine(path, "Dates.XML"));
+        AdminStore = new XMLStore<Admin>(Path.Combine(path, "Admins.XML"));
+        NewsStore = new XMLStore<News>(Path.Combine(path, "News.XML"));
+        FastLinkStore = new XMLStore<FastLink>(Path.Combine(path, "Links.XML"));
+        ProgramPartStore = new XMLStore<ProgramPart>(Path.Combine(path, "Program.XML"));
+        ConferenceStore = new XMLStore<Conference>(Path.Combine(path, "History.XML"));
+        KazanStore = new XMLStore<KazanPlace>(Path.Combine(path, "Kazan.XML"));
+        ExcursionStore = new XMLStore<ExcursionPart>(Path.Combine(path, "Excursion.XML"));
+        ThesisStore = new XMLStore<Thesis>(Path.Combine(path, "Thesis.XML"));
+        OrgcomStore = new XMLStore<Orgcom>(Path.Combine(path, "OrgComs.XML"));
+        CoordinatorStore = new XMLStore<Coordinator>(Path.Combine(path, "Coordinators.XML"));
     }
 }

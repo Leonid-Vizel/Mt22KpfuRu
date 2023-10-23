@@ -3,85 +3,84 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Serialization;
 
-namespace Mt22KpfuRu.Models
+namespace Mt22KpfuRu.Models;
+
+public class ProgramPart : IIndexable
 {
-    public class ProgramPart : IIndexable
+    public int Id { get; set; }
+    [XmlIgnore]
+    [DisplayName("Дата мероприятия")]
+    [Required(ErrorMessage = "Укажите дату мероприятия!")]
+    public DateOnly Date { get; set; }
+    [XmlIgnore]
+    [DisplayName("Время начала")]
+    [Required(ErrorMessage = "Укажите время начала мероприятия!")]
+    public TimeOnly TimeStart { get; set; }
+    [XmlIgnore]
+    [DisplayName("Время окончания")]
+    [Required(ErrorMessage = "Укажите время окончания мероприятия!")]
+    public TimeOnly TimeEnd { get; set; }
+    [DisplayName("Название")]
+    [Required(ErrorMessage = "Укажите название мероприятия!")]
+    public string Name { get; set; }
+    [DisplayName("Место проведения")]
+    [Required(ErrorMessage = "Укажите место проведения мероприятия!")]
+    public string Place { get; set; }
+
+    public string DateXml
     {
-        public int Id { get; set; }
-        [XmlIgnore]
-        [DisplayName("Дата мероприятия")]
-        [Required(ErrorMessage = "Укажите дату мероприятия!")]
-        public DateOnly Date { get; set; }
-        [XmlIgnore]
-        [DisplayName("Время начала")]
-        [Required(ErrorMessage = "Укажите время начала мероприятия!")]
-        public TimeOnly TimeStart { get; set; }
-        [XmlIgnore]
-        [DisplayName("Время окончания")]
-        [Required(ErrorMessage = "Укажите время окончания мероприятия!")]
-        public TimeOnly TimeEnd { get; set; }
-        [DisplayName("Название")]
-        [Required(ErrorMessage = "Укажите название мероприятия!")]
-        public string Name { get; set; }
-        [DisplayName("Место проведения")]
-        [Required(ErrorMessage = "Укажите место проведения мероприятия!")]
-        public string Place { get; set; }
+        get => Date.ToString("dd.MM.yyyy");
+        set => Date = DateOnly.ParseExact(value, "dd.MM.yyyy");
+    }
 
-        public string DateXml
+    public string StartTimeXml
+    {
+        get => TimeStart.ToString("HH:mm");
+        set => TimeStart = TimeOnly.ParseExact(value, "HH:mm");
+    }
+
+    public string EndTimeXml
+    {
+        get => TimeEnd.ToString("HH:mm");
+        set => TimeEnd = TimeOnly.ParseExact(value, "HH:mm");
+    }
+
+    [XmlIgnore]
+    public DateTime DateFromInput
+    {
+        set
         {
-            get => Date.ToString("dd.MM.yyyy");
-            set => Date = DateOnly.ParseExact(value, "dd.MM.yyyy");
+            Date = new DateOnly(value.Year, value.Month, value.Day);
         }
-
-        public string StartTimeXml
+        get
         {
-            get => TimeStart.ToString("HH:mm");
-            set => TimeStart = TimeOnly.ParseExact(value, "HH:mm");
+            return new DateTime(Date.Year, Date.Month, Date.Day);
         }
+    }
 
-        public string EndTimeXml
+    [XmlIgnore]
+    public DateTime TimeStartFromInput
+    {
+        set
         {
-            get => TimeEnd.ToString("HH:mm");
-            set => TimeEnd = TimeOnly.ParseExact(value, "HH:mm");
+            TimeStart = new TimeOnly(value.Hour, value.Minute, value.Second);
         }
-
-        [XmlIgnore]
-        public DateTime DateFromInput
+        get
         {
-            set
-            {
-                Date = new DateOnly(value.Year, value.Month, value.Day);
-            }
-            get
-            {
-                return new DateTime(Date.Year, Date.Month, Date.Day);
-            }
+            return new DateTime(1, 1, 1, TimeStart.Hour, TimeStart.Minute, TimeStart.Second);
         }
+    }
 
-        [XmlIgnore]
-        public DateTime TimeStartFromInput
+    [XmlIgnore]
+    public DateTime TimeEndFromInput
+    {
+        set
         {
-            set
-            {
-                TimeStart = new TimeOnly(value.Hour, value.Minute, value.Second);
-            }
-            get
-            {
-                return new DateTime(1, 1, 1, TimeStart.Hour, TimeStart.Minute, TimeStart.Second);
-            }
+            TimeEnd = new TimeOnly(value.Hour, value.Minute, value.Second);
         }
-
-        [XmlIgnore]
-        public DateTime TimeEndFromInput
+        get
         {
-            set
-            {
-                TimeEnd = new TimeOnly(value.Hour, value.Minute, value.Second);
-            }
-            get
-            {
-                return new DateTime(1, 1, 1, TimeEnd.Hour, TimeEnd.Minute, TimeEnd.Second);
-            }
+            return new DateTime(1, 1, 1, TimeEnd.Hour, TimeEnd.Minute, TimeEnd.Second);
         }
     }
 }

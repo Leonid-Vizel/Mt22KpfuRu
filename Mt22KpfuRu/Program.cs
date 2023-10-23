@@ -1,5 +1,15 @@
 using Mt22KpfuRu.Instruments;
+using System.Globalization;
 using System.Net;
+
+#region Culture settings
+CultureInfo cultureInfo = new CultureInfo("ru-RU");
+cultureInfo.NumberFormat.NumberDecimalSeparator = ".";
+cultureInfo.NumberFormat.CurrencyDecimalSeparator = ".";
+cultureInfo.NumberFormat.PercentDecimalSeparator = ".";
+CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+#endregion
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
