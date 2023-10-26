@@ -5,17 +5,17 @@ namespace Mt22KpfuRu.Instruments;
 
 public static class DataBank
 {
-    public static XMLStore<Admin> AdminStore { get; set; }
-    public static XMLStore<News> NewsStore { get; set; }
-    public static XMLStore<Date> DateStore { get; set; }
-    public static XMLStore<FastLink> FastLinkStore { get; set; }
-    public static XMLStore<ProgramPart> ProgramPartStore { get; set; }
-    public static XMLStore<Conference> ConferenceStore { get; set; }
-    public static XMLStore<KazanPlace> KazanStore { get; set; }
-    public static XMLStore<ExcursionPart> ExcursionStore { get; set; }
-    public static XMLStore<Thesis> ThesisStore { get; set; }
-    public static XMLStore<Coordinator> CoordinatorStore { get; set; }
-    public static XMLStore<Orgcom> OrgcomStore { get; set; }
+    public static XMLStore<Admin> AdminStore { get; set; } = null!;
+    public static XMLStore<News> NewsStore { get; set; } = null!;
+    public static XMLStore<Date> DateStore { get; set; } = null!;
+    public static XMLStore<FastLink> FastLinkStore { get; set; } = null!;
+    public static XMLStore<ProgramPart> ProgramPartStore { get; set; } = null!;
+    public static XMLStore<Conference> ConferenceStore { get; set; } = null!;
+    public static XMLStore<KazanPlace> KazanStore { get; set; } = null!;
+    public static XMLStore<ExcursionPart> ExcursionStore { get; set; } = null!;
+    public static XMLStore<Thesis> ThesisStore { get; set; } = null!;
+    public static XMLStore<Coordinator> CoordinatorStore { get; set; } = null!;
+    public static XMLStore<Orgcom> OrgcomStore { get; set; } = null!;
 
     public static IndexModel GetIndexModel(int page = 1)
     {
