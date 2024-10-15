@@ -1,5 +1,5 @@
 using Mt22KpfuRu.Models;
-using X.PagedList;
+using X.PagedList.Extensions;
 
 namespace Mt22KpfuRu.Instruments;
 
