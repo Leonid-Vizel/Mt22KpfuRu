@@ -1,0 +1,20 @@
+﻿@inject NavigationManager _navManager
+
+<li class="nav-item display-7 text-nowrap">
+    <a class="nav-link @(Active ? "active" : null)"
+       target="@(NewWindow ? "_blank" : "_self")"
+       @onclick="async () => await Clicked.InvokeAsync()"
+       href="@Href">@Label</a>
+</li>
+
+@code {
+    [Parameter]
+    public string Label { get; set; } = null!;
+    [Parameter]
+    public string Href { get; set; } = null!;
+    [Parameter]
+    public bool NewWindow { get; set; } = false;
+    [Parameter]
+    public EventCallback Clicked { get; set; }
+    private bool Active => _navManager.Uri.Contains(Href);
+}

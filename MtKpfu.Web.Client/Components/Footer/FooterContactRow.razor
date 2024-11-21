@@ -1,0 +1,13 @@
+﻿<div class="text-light">
+    <strong>@Label:</strong>
+    <a class="text-light mx-1" href="@ValueHref">@ValueText</a>
+</div>
+
+@code{
+    [Parameter]
+    public string Label { get; set; } = null!;
+    [Parameter]
+    public string ValueText { get; set; } = null!;
+    [Parameter]
+    public string? ValueHref { get; set; } = null!;
+}
