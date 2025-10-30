@@ -2,7 +2,7 @@
 <ArrayOfAdmin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Admin>
     <Id>1</Id>
-    <Name>Cock</Name>
+    <Name>Head admin</Name>
     <Login>test@gmail.com</Login>
     <HashPassword>8fd46c510ec8c3bf0142b777d50ef4d0a6065126dbba2e6090f181e6e6fe45d66c6c16d84bd269513d7d1d5aaf94afb3</HashPassword>
   </Admin>

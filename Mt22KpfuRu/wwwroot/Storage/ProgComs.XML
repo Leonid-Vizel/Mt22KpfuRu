@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfProgcom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Progcom>
+    <Id>1</Id>
+    <Name>Каюмов Айрат Рашитович</Name>
+    <Url>https://kpfu.ru/Ajrat.Kajumov</Url>
+  </Progcom>
+  <Progcom>
+    <Id>2</Id>
+    <Name>Челнокова Ирина Александровна</Name>
+    <Url>https://kpfu.ru/Irina.Chelnokova</Url>
+  </Progcom>
+  <Progcom>
+    <Id>3</Id>
+    <Name>Вахитов Искандер Рашидович</Name>
+    <Url>https://kpfu.ru/Iskander.Vakhitov</Url>
+  </Progcom>
+  <Progcom>
+    <Id>4</Id>
+    <Name>Герасимов Александр Владимирович</Name>
+    <Url>https://kpfu.ru/Alexander.Gerasimov</Url>
+  </Progcom>
+  <Progcom>
+    <Id>5</Id>
+    <Name>Варфоломеев Михаил Алексеевич</Name>
+    <Url>https://kpfu.ru/Mikhail.Varfolomeev</Url>
+  </Progcom>
+</ArrayOfProgcom>

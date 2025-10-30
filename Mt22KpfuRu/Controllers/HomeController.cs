@@ -21,8 +21,6 @@ public sealed class HomeController : Controller
         => Task.FromResult(View(DataBank.GetAboutModel()));
     public Task<ViewResult> Register()
         => Task.FromResult(View());
-    public Task<ViewResult> IVMIIT()
-        => Task.FromResult(View());
     public Task<ViewResult> Sponsors()
         => Task.FromResult(View());
     public Task<ViewResult> Participants()

@@ -81,7 +81,7 @@
 </div>
 
 <div class="container pt-3">
-    <h2 class="text-center">Оргкомитет VII Всероссийской с международным участием школы-конференции студентов, аспирантов и молодых ученых «Материалы и технологии XXI века»</h2>
+    <h2 class="text-center">Оргкомитет Всероссийской с международным участием школы-конференции студентов, аспирантов и молодых ученых «Материалы и технологии XXI века»</h2>
     <hr>
     <h3 class="title text-center">Со-председатели и координаторы</h3>
     <div class="row justify-content-xs-center justify-content-sm-center justify-content-md-center justify-content-lg-center">
@@ -99,6 +99,26 @@
                         <img src="~/img/orgs/@coordinator.Image" class="w-100 h-100">
                     </div>
                 </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="container">
+    <hr>
+    <div class="row justify-content-xs-center justify-content-sm-center justify-content-md-center justify-content-lg-center">
+        <h3 class="text-center">Члены программного комитета</h3>
+        @foreach (Progcom progcom in Model.Progcoms)
+        {
+            <div class="col-lg-4 col-md-6">
+                @if (string.IsNullOrEmpty(progcom.Url))
+                {
+                    <h5 class="title text-center"><a>@progcom.Name</a></h5>
+                }
+                else
+                {
+                    <h5 class="title text-center"><a href="@progcom.Url">@progcom.Name</a></h5>
+                }
             </div>
         }
     </div>

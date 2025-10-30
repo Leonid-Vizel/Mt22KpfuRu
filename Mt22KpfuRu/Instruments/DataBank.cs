@@ -16,6 +16,7 @@ public static class DataBank
     public static XMLStore<Thesis> ThesisStore { get; set; } = null!;
     public static XMLStore<Coordinator> CoordinatorStore { get; set; } = null!;
     public static XMLStore<Orgcom> OrgcomStore { get; set; } = null!;
+    public static XMLStore<Progcom> ProgcomStore { get; set; } = null!;
 
     public static IndexModel GetIndexModel(int page = 1)
     {
@@ -67,6 +68,7 @@ public static class DataBank
         {
             Coordinators = CoordinatorStore.List,
             Orgcoms = OrgcomStore.List,
+            Progcoms = ProgcomStore.List,
             Thesises = ThesisStore.List
         };
     }
@@ -83,6 +85,7 @@ public static class DataBank
         KazanStore = new XMLStore<KazanPlace>(Path.Combine(path, "Kazan.XML"));
         ExcursionStore = new XMLStore<ExcursionPart>(Path.Combine(path, "Excursion.XML"));
         ThesisStore = new XMLStore<Thesis>(Path.Combine(path, "Thesis.XML"));
+        ProgcomStore = new XMLStore<Progcom>(Path.Combine(path, "ProgComs.XML"));
         OrgcomStore = new XMLStore<Orgcom>(Path.Combine(path, "OrgComs.XML"));
         CoordinatorStore = new XMLStore<Coordinator>(Path.Combine(path, "Coordinators.XML"));
     }

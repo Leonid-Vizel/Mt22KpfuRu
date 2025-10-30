@@ -558,6 +558,88 @@ public class AdminController : Controller
     }
     #endregion
     #endregion
+    #region Progcoms
+    #region Create
+    public IActionResult CreateProgcom()
+    {
+        if (!HttpContext.Session.Keys.Contains("Login"))
+        {
+            return StatusCode(401);
+        }
+        return View();
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult CreateProgcom(Progcom model)
+    {
+        if (!HttpContext.Session.Keys.Contains("Login"))
+        {
+            return StatusCode(401);
+        }
+        if (!ModelState.IsValid)
+        {
+            return View(model);
+        }
+        DataBank.ProgcomStore.Add(model);
+        return RedirectToAction("Panel", "Admin", "progcoms");
+    }
+    #endregion
+    #region Edit
+    public IActionResult EditProgcom(int id)
+    {
+        if (!HttpContext.Session.Keys.Contains("Login"))
+        {
+            return StatusCode(401);
+        }
+        Progcom? foundModel = DataBank.ProgcomStore.List.FirstOrDefault(x => x.Id == id);
+        if (foundModel == null)
+        {
+            return NotFound();
+        }
+        return View(foundModel);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult EditProgcom(Progcom model)
+    {
+        if (!HttpContext.Session.Keys.Contains("Login"))
+        {
+            return StatusCode(401);
+        }
+        if (!ModelState.IsValid)
+        {
+            return View(model);
+        }
+        Progcom? foundModel = DataBank.ProgcomStore.List.FirstOrDefault(x => x.Id == model.Id);
+        if (foundModel == null)
+        {
+            return NotFound();
+        }
+        foundModel.Name = model.Name;
+        foundModel.Url = model.Url;
+        DataBank.ProgcomStore.RewriteList();
+        return RedirectToAction("Panel", "Admin", "progcoms");
+    }
+    #endregion
+    #region Delete
+    public IActionResult DeleteProgcom(int id)
+    {
+        if (!HttpContext.Session.Keys.Contains("Login"))
+        {
+            return StatusCode(401);
+        }
+        Progcom? foundModel = DataBank.ProgcomStore.List.FirstOrDefault(x => x.Id == id);
+        if (foundModel == null)
+        {
+            return NotFound();
+        }
+        DataBank.ProgcomStore.Delete(foundModel);
+        return RedirectToAction("Panel", "Admin", "progcoms");
+    }
+    #endregion
+    #endregion
     #region Program
     #region Create
     public IActionResult CreateProgram()

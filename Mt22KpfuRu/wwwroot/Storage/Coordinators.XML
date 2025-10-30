@@ -4,42 +4,42 @@
     <Id>1</Id>
     <Name>Таюрский Дмитрий Альбертович</Name>
     <Url>https://kpfu.ru/Dmitry.Tayurskii</Url>
-    <Image>Tajurskiy.jpg</Image>
+    <Image>Таюрский.jpg</Image>
   </Coordinator>
   <Coordinator>
     <Id>2</Id>
-    <Name>Киясов Андрей Павлович</Name>
-    <Url>https://kpfu.ru/andrej.kiyasov</Url>
-    <Image>Kijasov.jpg</Image>
+    <Name>Поминов Андрей Иванович</Name>
+    <Url>https://www.tatar-inform.ru/grats/pominov-andrei-ivanovic</Url>
+    <Image>Поминов.jpg</Image>
   </Coordinator>
   <Coordinator>
     <Id>3</Id>
-    <Name>Нургалиев Данис Карлович</Name>
-    <Url>https://kpfu.ru/Danis.Nourgaliev</Url>
-    <Image>Nurgaliev.jpg</Image>
+    <Name>Киясов Андрей Павлович</Name>
+    <Url>https://kpfu.ru/andrej.kiyasov</Url>
+    <Image>Киясов.jpg</Image>
   </Coordinator>
   <Coordinator>
     <Id>4</Id>
-    <Name>Абрамский Михаил Михайлович</Name>
-    <Url>https://kpfu.ru/Michael.Abramsky</Url>
-    <Image>Abramskiy.jpg</Image>
+    <Name>Зиганшин Марат Ахмедович</Name>
+    <Url>https://kpfu.ru/Marat.Ziganshin</Url>
+    <Image>Зиганшин.jpeg</Image>
   </Coordinator>
   <Coordinator>
     <Id>5</Id>
-    <Name>Зиганшин Марат Ахмедович</Name>
-    <Url>https://kpfu.ru/Marat.Ziganshin</Url>
-    <Image>Ziganshin.jpeg</Image>
+    <Name>Абрамский Михаил Михайлович</Name>
+    <Url>https://kpfu.ru/Michael.Abramsky</Url>
+    <Image>Абрамский.jpg</Image>
   </Coordinator>
   <Coordinator>
     <Id>6</Id>
-    <Name>Гафуров Марат Ревгерович</Name>
-    <Url>https://kpfu.ru/Marat.Gafurov</Url>
-    <Image>Gafurov.jpeg</Image>
+    <Name>Егорчев Антон Александрович</Name>
+    <Url>https://kpfu.ru/main?p_id=37349</Url>
+    <Image>Егорчев.jpg</Image>
   </Coordinator>
   <Coordinator>
     <Id>7</Id>
-    <Name>Чикрин Дмитрий Евгеньевич</Name>
-    <Url>https://kpfu.ru/dmitrij.chikrin</Url>
-    <Image>Chikrin.png</Image>
+    <Name>Силантьев Владимир Владимирович</Name>
+    <Url>https://kpfu.ru/Vladimir.Silantiev</Url>
+    <Image>Силантьев.jpg</Image>
   </Coordinator>
 </ArrayOfCoordinator>
