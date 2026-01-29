@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Session;
+using Microsoft.AspNetCore.Session;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Memory;
 using System.Collections;

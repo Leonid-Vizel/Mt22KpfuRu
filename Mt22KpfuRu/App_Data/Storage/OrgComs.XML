@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfOrgcom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Orgcom>
+    <Id>1</Id>
+    <Name>Валиева Лилия Рахимулловна</Name>
+  </Orgcom>
+  <Orgcom>
+    <Id>2</Id>
+    <Name>Хайдаров Айдар Адибович</Name>
+    <Url>https://kpfu.ru/Ajdar.Hajdarov</Url>
+  </Orgcom>
+  <Orgcom>
+    <Id>3</Id>
+    <Name>Валиев Ильхам Фирдинатович</Name>
+    <Url>https://kpfu.ru/ilham.valiev</Url>
+  </Orgcom>
+  <Orgcom>
+    <Id>4</Id>
+    <Name>Дьяконова Татьяна Вячеславовна</Name>
+    <Url>https://kpfu.ru/main?p_id=25282</Url>
+  </Orgcom>
+  <Orgcom>
+    <Id>5</Id>
+    <Name>Райманова Мария Александровна</Name>
+    <Url>https://kpfu.ru/main?p_id=25307</Url>
+  </Orgcom>
+</ArrayOfOrgcom>

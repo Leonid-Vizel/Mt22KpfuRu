@@ -1,4 +1,4 @@
-﻿namespace Mt22KpfuRu.Instruments;
+namespace Mt22KpfuRu.Instruments;
 
 public interface IIndexable
 {

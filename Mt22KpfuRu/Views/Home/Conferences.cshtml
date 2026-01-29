@@ -1,9 +1,10 @@
-﻿@using Mt22KpfuRu.Models;
+@using Mt22KpfuRu.Models.DataModels
+@using Mt22KpfuRu.Models.ViewModels
 @model ConferencesModel
 @{
     ViewData["Title"] = "История мероприятия";
     ViewData["footer"] = true;
-    Conference first = Model.Conferences[0];
+    ConferenceEntity first = Model.Conferences[0];
 }
 
 @section Scripts{
@@ -16,7 +17,7 @@
         <div class="d-flex justify-content-center">
             <div class="color-wrap">
                 <ul class="pagination pagination-lg">
-                    @foreach (Conference conference in Model.Conferences)
+                    @foreach (var conference in Model.Conferences)
                     {
                         <li class="page-item @(first == conference ? "active" : "")" id="@conference.Year">
                             <a class="page-link" href="JavaScript:Toggle(@conference.Year,'@conference.Program','@conference.Thesis','@conference.Winners')">@conference.Year</a>

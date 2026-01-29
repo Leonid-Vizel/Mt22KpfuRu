@@ -1,9 +1,11 @@
-﻿namespace Mt22KpfuRu.Models;
+using Mt22KpfuRu.Models.DataModels;
+
+namespace Mt22KpfuRu.Models.ViewModels;
 
 public class AboutModel
 {
-    public List<Thesis> Thesises;
-    public List<Orgcom> Orgcoms;
-    public List<Progcom> Progcoms;
-    public List<Coordinator> Coordinators;
+    public List<ThesisEntity> Thesises;
+    public List<OrgcomEntity> Orgcoms;
+    public List<ProgcomEntity> Progcoms;
+    public List<CoordinatorEntity> Coordinators;
 }

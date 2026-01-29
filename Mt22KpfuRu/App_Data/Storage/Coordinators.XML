@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCoordinator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Coordinator>
+    <Id>1</Id>
+    <Name>Таюрский Дмитрий Альбертович</Name>
+    <Url>https://kpfu.ru/Dmitry.Tayurskii</Url>
+    <Image>Таюрский.jpg</Image>
+  </Coordinator>
+  <Coordinator>
+    <Id>2</Id>
+    <Name>Поминов Андрей Иванович</Name>
+    <Url>https://www.tatar-inform.ru/grats/pominov-andrei-ivanovic</Url>
+    <Image>Поминов.jpg</Image>
+  </Coordinator>
+  <Coordinator>
+    <Id>3</Id>
+    <Name>Киясов Андрей Павлович</Name>
+    <Url>https://kpfu.ru/andrej.kiyasov</Url>
+    <Image>Киясов.jpg</Image>
+  </Coordinator>
+  <Coordinator>
+    <Id>4</Id>
+    <Name>Зиганшин Марат Ахмедович</Name>
+    <Url>https://kpfu.ru/Marat.Ziganshin</Url>
+    <Image>Зиганшин.jpeg</Image>
+  </Coordinator>
+  <Coordinator>
+    <Id>5</Id>
+    <Name>Абрамский Михаил Михайлович</Name>
+    <Url>https://kpfu.ru/Michael.Abramsky</Url>
+    <Image>Абрамский.jpg</Image>
+  </Coordinator>
+  <Coordinator>
+    <Id>6</Id>
+    <Name>Егорчев Антон Александрович</Name>
+    <Url>https://kpfu.ru/main?p_id=37349</Url>
+    <Image>Егорчев.jpg</Image>
+  </Coordinator>
+  <Coordinator>
+    <Id>7</Id>
+    <Name>Силантьев Владимир Владимирович</Name>
+    <Url>https://kpfu.ru/Vladimir.Silantiev</Url>
+    <Image>Силантьев.jpg</Image>
+  </Coordinator>
+</ArrayOfCoordinator>

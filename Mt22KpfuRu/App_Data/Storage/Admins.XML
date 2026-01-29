@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAdmin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Admin>
+    <Id>1</Id>
+    <Name>Head admin123</Name>
+    <Login>test@gmail.com</Login>
+    <HashPassword>pbkdf2-sha256$600000$AVGfamRcVBnmQPHIlL9ioA==$Xaa9STMYe3w+EX5tdvDYadEnMFrYpOJWHg8tdqTJww4=</HashPassword>
+  </Admin>
+</ArrayOfAdmin>

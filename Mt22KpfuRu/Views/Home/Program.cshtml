@@ -1,4 +1,7 @@
-﻿@model ProgramModel
+@using Mt22KpfuRu.Instruments;
+@using Mt22KpfuRu.Models.DataModels
+@using Mt22KpfuRu.Models.ViewModels
+@model ProgramModel
 @{
     ViewData["Title"] = "Программа конференции";
     ViewData["footer"] = true;
@@ -18,15 +21,15 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (IGrouping<DateOnly, ProgramPart> group in Model.Parts)
+                @foreach (var group in Model.Parts)
                 {
                     <tr class="cell-centered"><td colspan="3">@group.Key.ToString("d MMMM yyyy г.")</td></tr>
-                    @foreach (ProgramPart part in group)
+                    @foreach (var part in group)
                     {
                         <tr class="cell-centered">
                             <td>@part.TimeStart.ToString("HH:mm") - @part.TimeEnd.ToString("HH:mm")</td>
                             <td>@part.Name</td>
-                            <td>@Html.Raw(part.Place)</td>
+                            <td>@Html.Raw(HtmlSanitizerLite.Sanitize(part.Place))</td>
                         </tr>
                     }
                 }

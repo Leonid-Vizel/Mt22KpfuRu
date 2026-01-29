@@ -1,0 +1,490 @@
+@model AdminPanelModel
+@{
+    int counter = 0;
+    ViewData["Title"] = "Панель администратора";
+    ViewData["footer"] = true;
+}
+<link rel="stylesheet" href="~/css/AdminPanelStyle.min.css" asp-append-version="true">
+
+<div class="color-wrap">
+    <div class="container pt-2 pb-3">
+        <h2 class="text-light text-center">@ViewData["Title"]</h2>
+        <hr class="text-light">
+        <div class="row justify-content-center">
+            <div class="col-lg-12" id="admins">
+                <div class="row justify-content-end mb-1">
+                    <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Администраторы</h4></div>
+                    <div class="col-3"><a class="btn btn-success w-100 w-100" asp-controller="Admins" asp-action="Create"><i class="bi bi-plus-lg"></i></a></div>
+                </div>
+                <table class="table table-responsive table-bordered text-light bg-info">
+                    <thead>
+                        <tr class="cell-centered">
+                            <th scope="col">#</th>
+                            <th scope="col">Логин</th>
+                            <th scope="col">Имя</th>
+                            <th scope="col">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var admin in Model.Admins)
+                        {
+                            counter++;
+                            <tr class="cell-centered">
+                                <td>@counter</td>
+                                <td>@admin.Login</td>
+                                <td>@admin.Name</td>
+                                <td class="text-nowrap">
+                                    <a class="btn btn-warning text-dark" asp-controller="Admins" asp-action="Edit" asp-route-id="@admin.Id"><i class="bi bi-pencil-fill"></i></a>
+                                    <form method="post" asp-controller="Admins" asp-action="Delete" asp-route-id="@admin.Id" class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-danger text-dark"><i class="bi bi-trash-fill"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-12" id="dates">
+                <div class="row justify-content-end mb-1">
+                    <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Ключевые даты</h4></div>
+                    <div class="col-3"><a class="btn btn-success w-100" asp-controller="Dates" asp-action="Create"><i class="bi bi-plus-lg"></i></a></div>
+                </div>
+                <table class="table table-responsive table-bordered text-light bg-info">
+                    <thead>
+                        <tr class="cell-centered">
+                            <th scope="col">#</th>
+                            <th scope="col">Дата</th>
+                            <th scope="col">Время</th>
+                            <th scope="col">Событие</th>
+                            <th scope="col">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            counter = 0;
+                        }
+                        @foreach (var date in Model.Dates)
+                        {
+                            counter++;
+                            <tr class="cell-centered">
+                                <td>@counter</td>
+                                <td>@date.DateTime.ToString("d MMMM yyyy HH:mm")</td>
+                                <td>@(date.ShowTime ? "Показано" : "Скрыто")</td>
+                                <td>@date.Name</td>
+                                <td class="text-nowrap">
+                                    <a class="btn btn-warning text-dark" asp-controller="Dates" asp-action="Edit" asp-route-id="@date.Id"><i class="bi bi-pencil-fill"></i></a>
+                                    <form method="post" asp-controller="Dates" asp-action="Delete" asp-route-id="@date.Id" class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-danger text-dark"><i class="bi bi-trash-fill"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-12" id="fastlinks">
+                <div class="row justify-content-end mb-1">
+                    <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Быстрые ссылки</h4></div>
+                    <div class="col-3"><a class="btn btn-success w-100" asp-controller="FastLinks" asp-action="Create"><i class="bi bi-plus-lg"></i></a></div>
+                </div>
+                <table class="table table-responsive table-bordered text-light bg-info">
+                    <thead>
+                        <tr class="cell-centered">
+                            <th scope="col">#</th>
+                            <th scope="col">Описание</th>
+                            <th scope="col">Ссылка</th>
+                            <th scope="col">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            counter = 0;
+                        }
+                        @foreach (var link in Model.FastLinks)
+                        {
+                            counter++;
+                            <tr class="cell-centered">
+                                <td>@counter</td>
+                                <td>@link.Name</td>
+                                <td><a class="text-light" href="@link.Url">Ссылка</a></td>
+                                <td class="text-nowrap">
+                                    <a class="btn btn-warning text-dark" asp-controller="FastLinks" asp-action="Edit" asp-route-id="@link.Id"><i class="bi bi-pencil-fill"></i></a>
+                                    <form method="post" asp-controller="FastLinks" asp-action="Delete" asp-route-id="@link.Id" class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-danger text-dark"><i class="bi bi-trash-fill"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-12" id="news">
+                <div class="row justify-content-end mb-1">
+                    <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Новости</h4></div>
+                    <div class="col-3"><a class="btn btn-success w-100" asp-controller="News" asp-action="Create"><i class="bi bi-plus-lg"></i></a></div>
+                </div>
+                <table class="table table-responsive table-bordered text-light bg-info">
+                    <thead>
+                        <tr class="cell-centered">
+                            <th scope="col">#</th>
+                            <th scope="col">Заголовок</th>
+                            <th scope="col">Описание</th>
+                            <th scope="col">Содержание</th>
+                            <th scope="col">Время создания</th>
+                            <th scope="col">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            counter = 0;
+                        }
+                        @foreach (var news in Model.News.OrderByDescending(x => x.CreateTime))
+                        {
+                            counter++;
+                            <tr class="cell-centered">
+                                <td>@counter</td>
+                                <td>@news.Title</td>
+                                <td>@news.Description</td>
+                                <td>@Html.Raw(HtmlSanitizerLite.Sanitize(news.Content))</td>
+                                <td>@news.CreateTime.ToString("dd.MM.yyyy HH:mm")</td>
+                                <td class="text-nowrap">
+                                    <a class="btn btn-warning text-dark" asp-controller="News" asp-action="Edit" asp-route-id="@news.Id"><i class="bi bi-pencil-fill"></i></a>
+                                    <form method="post" asp-controller="News" asp-action="Delete" asp-route-id="@news.Id" class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-danger text-dark"><i class="bi bi-trash-fill"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-12" id="program">
+                <div class="row justify-content-end mb-1">
+                    <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Программа конференции</h4></div>
+                    <div class="col-3"><a class="btn btn-success w-100" asp-controller="Program" asp-action="Create"><i class="bi bi-plus-lg"></i></a></div>
+                </div>
+                <table class="table table-responsive table-bordered text-light bg-info">
+                    <thead>
+                        <tr class="cell-centered">
+                            <th scope="col">#</th>
+                            <th scope="col">Дата</th>
+                            <th scope="col">Период</th>
+                            <th scope="col">Событие</th>
+                            <th scope="col">Место</th>
+                            <th scope="col">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            counter = 0;
+                        }
+                        @foreach (var part in Model.ProgramParts.OrderBy(x => x.Date).ThenBy(x => x.TimeStart))
+                        {
+                            counter++;
+                            <tr class="cell-centered">
+                                <td>@counter</td>
+                                <td>@part.Date.ToString("d MMMM yyyy")</td>
+                                <td>@part.TimeStart.ToString("HH:mm") - @part.TimeEnd.ToString("HH:mm")</td>
+                                <td>@Html.Raw(HtmlSanitizerLite.Sanitize(part.Name))</td>
+                                <td>@Html.Raw(HtmlSanitizerLite.Sanitize(part.Place))</td>
+                                <td class="text-nowrap">
+                                    <a class="btn btn-warning text-dark" asp-controller="Program" asp-action="Edit" asp-route-id="@part.Id"><i class="bi bi-pencil-fill"></i></a>
+                                    <form method="post" asp-controller="Program" asp-action="Delete" asp-route-id="@part.Id" class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-danger text-dark"><i class="bi bi-trash-fill"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-12" id="history">
+                <div class="row justify-content-end mb-1">
+                    <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">История конференции</h4></div>
+                    <div class="col-3"><a class="btn btn-success w-100" asp-controller="History" asp-action="Create"><i class="bi bi-plus-lg"></i></a></div>
+                </div>
+                <table class="table table-responsive table-bordered text-light bg-info">
+                    <thead>
+                        <tr class="cell-centered">
+                            <th scope="col">#</th>
+                            <th scope="col">Год</th>
+                            <th scope="col">Программа</th>
+                            <th scope="col">Тезисы</th>
+                            <th scope="col">Победители</th>
+                            <th scope="col">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            counter = 0;
+                        }
+                        @foreach (var conference in Model.Conferences.OrderByDescending(x => x.Year))
+                        {
+                            counter++;
+                            <tr class="cell-centered">
+                                <td>@counter</td>
+                                <td>@conference.Year</td>
+                                <td>@(conference.Program ? "Есть" : "Нет")</td>
+                                <td>@(conference.Thesis ? "Есть" : "Нет")</td>
+                                <td>@(conference.Winners ? "Есть" : "Нет")</td>
+                                <td class="text-nowrap">
+                                    <form method="post" asp-controller="History" asp-action="Delete" asp-route-id="@conference.Id" class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-danger text-dark"><i class="bi bi-trash-fill"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-12" id="excursions">
+                <div class="row justify-content-end mb-1">
+                    <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Экскурсии</h4></div>
+                    <div class="col-3"><a class="btn btn-success w-100" asp-controller="Excursions" asp-action="Create"><i class="bi bi-plus-lg"></i></a></div>
+                </div>
+                <table class="table table-responsive table-bordered text-light bg-info">
+                    <thead>
+                        <tr class="cell-centered">
+                            <th scope="col">#</th>
+                            <th scope="col">Заголовок</th>
+                            <th scope="col">Описание</th>
+                            <th scope="col">Картинка 1</th>
+                            <th scope="col">Картинка 2</th>
+                            <th scope="col">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            counter = 0;
+                        }
+                        @foreach (var part in Model.Excursions)
+                        {
+                            counter++;
+                            <tr class="cell-centered">
+                                <td>@counter</td>
+                                <td>@part.Name</td>
+                                <td>@Html.Raw(HtmlSanitizerLite.Sanitize(part.Description))</td>
+                                <td><a class="text-light" target="_blank" href="~/img/excursions/@part.Image1">Посмотреть</a></td>
+                                <td>
+                                    @if (part.Image2 == null)
+                                    {
+                                        @: Не загружена
+                                    }
+                                    else
+                                    {
+                                        <a class="text-light" target="_blank" href="~/img/excursions/@part.Image2">Посмотреть</a>
+                                    }
+                                </td>
+                                <td class="text-nowrap">
+                                    <a class="btn btn-warning text-dark" asp-controller="Excursions" asp-action="Edit" asp-route-id="@part.Id"><i class="bi bi-pencil-fill"></i></a>
+                                    <form method="post" asp-controller="Excursions" asp-action="Delete" asp-route-id="@part.Id" class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-danger text-dark"><i class="bi bi-trash-fill"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-12" id="kazan">
+                <div class="row justify-content-end mb-1">
+                    <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Казань</h4></div>
+                    <div class="col-3"><a class="btn btn-success w-100" asp-controller="Kazan" asp-action="Create"><i class="bi bi-plus-lg"></i></a></div>
+                </div>
+                <table class="table table-responsive table-bordered text-light bg-info">
+                    <thead>
+                        <tr class="cell-centered">
+                            <th scope="col">#</th>
+                            <th scope="col">Заголовок</th>
+                            <th scope="col">Описание</th>
+                            <th scope="col">Картинка</th>
+                            <th scope="col">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            counter = 0;
+                        }
+                        @foreach (var place in Model.KazanPlaces)
+                        {
+                            counter++;
+                            <tr class="cell-centered">
+                                <td>@counter</td>
+                                <td>@place.Name</td>
+                                <td>@Html.Raw(HtmlSanitizerLite.Sanitize(place.Description))</td>
+                                <td><a class="text-light" target="_blank" href="~/img/Kazan/@place.Image">Посмотреть</a></td>
+                                <td class="text-nowrap">
+                                    <a class="btn btn-warning text-dark" asp-controller="Kazan" asp-action="Edit" asp-route-id="@place.Id"><i class="bi bi-pencil-fill"></i></a>
+                                    <form method="post" asp-controller="Kazan" asp-action="Delete" asp-route-id="@place.Id" class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-danger text-dark"><i class="bi bi-trash-fill"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-12" id="thesis">
+                <div class="row justify-content-end mb-1">
+                    <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Основные научные направления</h4></div>
+                    <div class="col-3"><a class="btn btn-success w-100" asp-controller="Thesis" asp-action="Create"><i class="bi bi-plus-lg"></i></a></div>
+                </div>
+                <table class="table table-responsive table-bordered text-light bg-info">
+                    <thead>
+                        <tr class="cell-centered">
+                            <th scope="col">#</th>
+                            <th scope="col">Заголовок</th>
+                            <th scope="col">Описание</th>
+                            <th scope="col">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            counter = 0;
+                        }
+                        @foreach (var thesis in Model.Thesis)
+                        {
+                            counter++;
+                            <tr class="cell-centered">
+                                <td>@counter</td>
+                                <td>@thesis.Name</td>
+                                <td>@thesis.Description</td>
+                                <td class="text-nowrap">
+                                    <a class="btn btn-warning text-dark" asp-controller="Thesis" asp-action="Edit" asp-route-id="@thesis.Id"><i class="bi bi-pencil-fill"></i></a>
+                                    <form method="post" asp-controller="Thesis" asp-action="Delete" asp-route-id="@thesis.Id" class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-danger text-dark"><i class="bi bi-trash-fill"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-12" id="orgcoms">
+                <div class="row justify-content-end mb-1">
+                    <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Члены оргкомитета</h4></div>
+                    <div class="col-3"><a class="btn btn-success w-100" asp-controller="Orgcoms" asp-action="Create"><i class="bi bi-plus-lg"></i></a></div>
+                </div>
+                <table class="table table-responsive table-bordered text-light bg-info">
+                    <thead>
+                        <tr class="cell-centered">
+                            <th scope="col">#</th>
+                            <th scope="col">ФИО</th>
+                            <th scope="col">Ссылка</th>
+                            <th scope="col">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            counter = 0;
+                        }
+                        @foreach (var orgcom in Model.Orgcoms)
+                        {
+                            counter++;
+                            <tr class="cell-centered">
+                                <td>@counter</td>
+                                <td>@orgcom.Name</td>
+                                <td><a class="text-light" href="@orgcom.Url">Ссылка</a></td>
+                                <td class="text-nowrap">
+                                    <a class="btn btn-warning text-dark" asp-controller="Orgcoms" asp-action="Edit" asp-route-id="@orgcom.Id"><i class="bi bi-pencil-fill"></i></a>
+                                    <form method="post" asp-controller="Orgcoms" asp-action="Delete" asp-route-id="@orgcom.Id" class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-danger text-dark"><i class="bi bi-trash-fill"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-12" id="progcoms">
+                <div class="row justify-content-end mb-1">
+                    <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Члены программного комитета</h4></div>
+                    <div class="col-3"><a class="btn btn-success w-100" asp-controller="Progcoms" asp-action="Create"><i class="bi bi-plus-lg"></i></a></div>
+                </div>
+                <table class="table table-responsive table-bordered text-light bg-info">
+                    <thead>
+                        <tr class="cell-centered">
+                            <th scope="col">#</th>
+                            <th scope="col">ФИО</th>
+                            <th scope="col">Ссылка</th>
+                            <th scope="col">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            counter = 0;
+                        }
+                        @foreach (var progcom in Model.Progcoms)
+                        {
+                            counter++;
+                            <tr class="cell-centered">
+                                <td>@counter</td>
+                                <td>@progcom.Name</td>
+                                <td><a class="text-light" href="@progcom.Url">Ссылка</a></td>
+                                <td class="text-nowrap">
+                                    <a class="btn btn-warning text-dark" asp-controller="Progcoms" asp-action="Edit" asp-route-id="@progcom.Id"><i class="bi bi-pencil-fill"></i></a>
+                                    <form method="post" asp-controller="Progcoms" asp-action="Delete" asp-route-id="@progcom.Id" class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-danger text-dark"><i class="bi bi-trash-fill"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-12" id="coordinators">
+                <div class="row justify-content-end mb-1">
+                    <div class="col-6"><h4 class="text-light text-center mt-2 mb-0">Со-председатели и координаторы</h4></div>
+                    <div class="col-3"><a class="btn btn-success w-100" asp-controller="Coordinators" asp-action="Create"><i class="bi bi-plus-lg"></i></a></div>
+                </div>
+                <table class="table table-responsive table-bordered text-light bg-info">
+                    <thead>
+                        <tr class="cell-centered">
+                            <th scope="col">#</th>
+                            <th scope="col">ФИО</th>
+                            <th scope="col">Ссылка</th>
+                            <th scope="col">Картинка</th>
+                            <th scope="col">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            counter = 0;
+                        }
+                        @foreach (var coordinator in Model.Coordinators)
+                        {
+                            counter++;
+                            <tr class="cell-centered">
+                                <td>@counter</td>
+                                <td>@coordinator.Name</td>
+                                <td><a class="text-light" href="@coordinator.Url">Ссылка</a></td>
+                                <td><a class="text-light" target="_blank" href="~/img/orgs/@coordinator.Image">Посмотреть</a></td>
+                                <td class="text-nowrap">
+                                    <a class="btn btn-warning text-dark" asp-controller="Coordinators" asp-action="Edit" asp-route-id="@coordinator.Id"><i class="bi bi-pencil-fill"></i></a>
+                                    <form method="post" asp-controller="Coordinators" asp-action="Delete" asp-route-id="@coordinator.Id" class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-danger text-dark"><i class="bi bi-trash-fill"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-12">
+                <a class="btn btn-danger w-100" asp-controller="Auth" asp-action="Logout">Выход из панели</a>
+            </div>
+        </div>
+    </div>
+</div>

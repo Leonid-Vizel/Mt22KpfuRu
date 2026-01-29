@@ -1,3 +1,6 @@
+@using Mt22KpfuRu.Instruments;
+@using Mt22KpfuRu.Models.DataModels
+@using Mt22KpfuRu.Models.ViewModels
 @model AboutModel
 @{
     ViewData["Title"] = "О конференции";
@@ -59,7 +62,7 @@
 <div class="color-wrap">
     <div class="container text-light pt-3 pb-4" id="Sections">
         <h2 class="text-center text-light mb-4">Основные научные направления</h2>
-        @foreach(Thesis thesis in Model.Thesises)
+        @foreach(ThesisEntity thesis in Model.Thesises)
         {
             counter++;
             <div class="accordion mb-2">
@@ -71,7 +74,7 @@
                     </h2>
                     <div id="Accordion-@counter" class="accordion-collapse bg-primary text-light collapse">
                         <div class="accordion-body">
-                            <p class="p-0 m-0">@Html.Raw(thesis.Description)</p>
+                            <p class="p-0 m-0">@Html.Raw(HtmlSanitizerLite.Sanitize(thesis.Description))</p>
                         </div>
                     </div>
                 </div>
@@ -85,7 +88,7 @@
     <hr>
     <h3 class="title text-center">Со-председатели и координаторы</h3>
     <div class="row justify-content-xs-center justify-content-sm-center justify-content-md-center justify-content-lg-center">
-        @foreach(Coordinator coordinator in Model.Coordinators)
+        @foreach(CoordinatorEntity coordinator in Model.Coordinators)
         {
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3">
                 <div class="card border-primary h-100" style="max-width: 20rem;">
@@ -108,7 +111,7 @@
     <hr>
     <div class="row justify-content-xs-center justify-content-sm-center justify-content-md-center justify-content-lg-center">
         <h3 class="text-center">Члены программного комитета</h3>
-        @foreach (Progcom progcom in Model.Progcoms)
+        @foreach (var progcom in Model.Progcoms)
         {
             <div class="col-lg-4 col-md-6">
                 @if (string.IsNullOrEmpty(progcom.Url))
@@ -128,7 +131,7 @@
     <hr>
     <div class="row justify-content-xs-center justify-content-sm-center justify-content-md-center justify-content-lg-center">
         <h3 class="text-center">Члены оргкомитета</h3>
-        @foreach(Orgcom orgcom in Model.Orgcoms)
+        @foreach(OrgcomEntity orgcom in Model.Orgcoms)
         {
             <div class="col-lg-4 col-md-6">
                 @if (string.IsNullOrEmpty(orgcom.Url))

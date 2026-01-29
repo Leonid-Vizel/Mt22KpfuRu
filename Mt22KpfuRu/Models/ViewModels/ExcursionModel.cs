@@ -1,6 +1,8 @@
-﻿namespace Mt22KpfuRu.Models;
+using Mt22KpfuRu.Models.DataModels;
+
+namespace Mt22KpfuRu.Models.ViewModels;
 
 public class ExcursionModel
 {
-    public List<ExcursionPart> Parts { get; set; }
+    public List<ExcursionPartEntity> Parts { get; set; }
 }

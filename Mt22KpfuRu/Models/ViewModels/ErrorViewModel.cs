@@ -1,4 +1,4 @@
-namespace Mt22KpfuRu.Models;
+namespace Mt22KpfuRu.Models.ViewModels;
 
 public class ErrorViewModel
 {

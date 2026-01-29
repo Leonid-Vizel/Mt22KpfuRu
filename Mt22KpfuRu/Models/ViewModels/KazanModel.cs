@@ -1,6 +1,8 @@
-﻿namespace Mt22KpfuRu.Models;
+using Mt22KpfuRu.Models.DataModels;
+
+namespace Mt22KpfuRu.Models.ViewModels;
 
 public class KazanModel
 {
-    public List<KazanPlace> Places { get; set; }
+    public List<KazanPlaceEntity> Places { get; set; }
 }

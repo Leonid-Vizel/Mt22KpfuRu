@@ -1,4 +1,7 @@
-﻿@using X.PagedList
+@using Mt22KpfuRu.Instruments;
+@using Mt22KpfuRu.Models.DataModels
+@using Mt22KpfuRu.Models.ViewModels
+@using X.PagedList
 @model IndexModel
 @{
     ViewData["Title"] = "Главная";
@@ -34,7 +37,7 @@
         <div class="col-lg-3 col-md-4">
             <h3 class="text-center">Ключевые даты</h3>
             <ul class="event-list">
-                @foreach (Date date in Model.Dates)
+                @foreach (var date in Model.Dates)
                 {
                     <li>
                         <div class="time d-flex align-items-center justify-content-center">
@@ -56,7 +59,7 @@
             <div>
                 <h3 class="text-center">Быстрые ссылки</h3>
                 <ul class="links text-center">
-                    @foreach (FastLink link in Model.FastLinks)
+                    @foreach (var link in Model.FastLinks)
                     {
                         <li><a class="link-btn" href="@link.Url">@link.Name</a></li>
                     }
@@ -67,7 +70,7 @@
             <div id="news-loaded">
                 <h3 class="text-center">Новости</h3>
                 <partial name="_PagerPartial" model="Model.News" />
-                @foreach (News news in Model.News)
+                @foreach (var news in Model.News)
                 {
                     <div class="news_block mb-2">
                         <h5 class="text-center">@news.Title</h5>
@@ -95,7 +98,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <p>
-                                        @Html.Raw(@news.Content)
+                                        @Html.Raw(HtmlSanitizerLite.Sanitize(@news.Content))
                                     </p>
                                 </div>
                             </div>

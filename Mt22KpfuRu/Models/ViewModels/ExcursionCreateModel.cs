@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using Mt22KpfuRu.Models.DataModels;
 
 namespace Mt22KpfuRu.Models.ViewModels;
 
-public class ExcursionCreateModel : ExcursionPart
+public class ExcursionCreateModel : ExcursionPartEntity
 {
     [DisplayName("Изображение #1")]
     [Required(ErrorMessage = "Прикрепите хотя бы одно изображение!")]

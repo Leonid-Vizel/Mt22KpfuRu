@@ -1,4 +1,5 @@
-﻿@using Mt22KpfuRu.Models;
+@using Mt22KpfuRu.Models.DataModels
+@using Mt22KpfuRu.Models.ViewModels
 @model ExcursionModel
 @{
     ViewData["Title"] = "Экскурсии";
@@ -18,7 +19,7 @@
 </div>
 <div class="bg-primary">
     <div class="container pt-2 pb-2">
-        @foreach (ExcursionPart part in Model.Parts)
+        @foreach (var part in Model.Parts)
         {
             <div class="card color-wrap mb-3 mt-2">
                 <div class="card-body">
@@ -34,7 +35,7 @@
                         <img class="float-start w-img-2 mb-2" src="~/img/excursions/@part.Image2" />
                     }
                     <p class="card-text text-light">
-                        @Html.Raw(part.Description)
+                        @Html.Raw(HtmlSanitizerLite.Sanitize(part.Description))
                     </p>
                 </div>
             </div>

@@ -1,8 +1,9 @@
-﻿using X.PagedList;
-namespace Mt22KpfuRu.Models;
+using Mt22KpfuRu.Models.DataModels;
+using X.PagedList;
+namespace Mt22KpfuRu.Models.ViewModels;
 public class IndexModel
 {
-    public IPagedList<News> News { get; set; }
-    public List<Date> Dates { get; set; }
-    public List<FastLink> FastLinks { get; set; }
+    public IPagedList<NewsEntity> News { get; set; }
+    public List<DateEntity> Dates { get; set; }
+    public List<FastLinkEntity> FastLinks { get; set; }
 }

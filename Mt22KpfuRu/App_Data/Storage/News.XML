@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfNews xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <News>
+    <Id>1</Id>
+    <Title>Информационное письмо</Title>
+    <Description>Опубликовано информационное письмо!</Description>
+    <Content>
+			Многоуважаемые участники конференции, уведомляем Вас о публикации информационного письма нашей конференции!
+
+			Ознакомиться с ним можно &lt;a href="https://mt21kpfu.ru/docs/InfoLetter-2025.pdf" target="_blank"&gt;здесь&lt;/a&gt; или в быстрых ссылках на главной странице нашего сайта.
+		</Content>
+    <CreateTime>2025-10-30T20:02:07.2944367+03:00</CreateTime>
+  </News>
+  <News>
+    <Id>2</Id>
+    <Title>Telegram-канал</Title>
+    <Description>Подписывайтесь на наш телеграм-канал!</Description>
+    <Content>
+			Подписывайтесь на наш телеграм-канал и получайте самые свежие новости по конференции:
+			&lt;br /&gt;
+			&lt;a href="https://t.me/mit21vkfu" target="_blank"&gt;https://t.me/mit21vkfu&lt;/a&gt;
+		</Content>
+    <CreateTime>2025-10-30T20:04:11.2372152+03:00</CreateTime>
+  </News>
+</ArrayOfNews>

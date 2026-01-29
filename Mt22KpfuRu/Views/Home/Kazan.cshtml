@@ -1,4 +1,5 @@
-﻿@using Mt22KpfuRu.Models;
+@using Mt22KpfuRu.Models.DataModels
+@using Mt22KpfuRu.Models.ViewModels
 @model KazanModel
 @{
     ViewData["Title"] = "Казань";
@@ -18,7 +19,7 @@
 </div>
 <div class="bg-primary">
     <div class="container pt-2 pb-2">
-        @foreach(KazanPlace place in Model.Places)
+        @foreach(KazanPlaceEntity place in Model.Places)
         {
             <div class="card color-wrap mb-3 mt-2">
                 <div class="card-body">
@@ -26,7 +27,7 @@
                     <hr class="text-light">
                     <img class="float-start w-img-1 mb-2" src="~/img/Kazan/@place.Image" />
                     <p class="card-text text-light">
-                        @Html.Raw(place.Description);
+                        @Html.Raw(HtmlSanitizerLite.Sanitize(place.Description));
                     </p>
                 </div>
             </div>

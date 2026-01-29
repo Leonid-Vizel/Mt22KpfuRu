@@ -1,7 +1,9 @@
-﻿namespace Mt22KpfuRu.Models;
+using Mt22KpfuRu.Models.DataModels;
+
+namespace Mt22KpfuRu.Models.ViewModels;
 public class ConferencesModel
 {
-    public List<Conference> Conferences { get; set; }
+    public List<ConferenceEntity> Conferences { get; set; }
     public ConferencesModel Copy()
     {
         return new ConferencesModel()

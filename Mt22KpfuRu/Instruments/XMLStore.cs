@@ -1,4 +1,4 @@
-﻿using System.Xml.Serialization;
+using System.Xml.Serialization;
 
 namespace Mt22KpfuRu.Instruments;
 
@@ -8,6 +8,7 @@ public class XMLStore<T> where T : IIndexable
     public string XMLPath { get; set; }
     public bool AlwaysSearch { get; set; }
     private XmlSerializer ListSerializer { get; set; }
+    private readonly object _sync = new object();
 
     public XMLStore(string XMLPath, bool alwaysSearch = true)
     {
@@ -19,26 +20,46 @@ public class XMLStore<T> where T : IIndexable
 
     public void LoadData()
     {
-        if (File.Exists(XMLPath))
+        lock (_sync)
         {
-            using (Stream reader = new FileStream(XMLPath, FileMode.Open))
+            if (File.Exists(XMLPath))
             {
-                List = ListSerializer.Deserialize(reader) as List<T>;
+                using (Stream reader = new FileStream(XMLPath, FileMode.Open, FileAccess.Read, FileShare.Read))
+                {
+                    List = ListSerializer.Deserialize(reader) as List<T>;
+                }
             }
-        }
-        if (List == null)
-        {
-            List = new List<T>();
-            RewriteList();
+            if (List == null)
+            {
+                List = new List<T>();
+                RewriteListUnsafe();
+            }
         }
     }
 
     public void RewriteList()
     {
-        using (StreamWriter writer = new StreamWriter(XMLPath))
+        lock (_sync)
+        {
+            RewriteListUnsafe();
+        }
+    }
+
+    private void RewriteListUnsafe()
+    {
+        // Write-through to avoid corrupting the main file on partial write.
+        var dir = Path.GetDirectoryName(XMLPath);
+        if (!string.IsNullOrEmpty(dir))
+        {
+            Directory.CreateDirectory(dir);
+        }
+
+        var tmp = XMLPath + ".tmp";
+        using (var writer = new StreamWriter(tmp, false))
         {
             ListSerializer.Serialize(writer, List);
         }
+        File.Move(tmp, XMLPath, true);
     }
 
     private int GetNextIndex()
@@ -49,15 +70,15 @@ public class XMLStore<T> where T : IIndexable
         }
         if (AlwaysSearch)
         {
-            int last = List.First().Id;
-            List<T> entities = List.OrderBy(x => x.Id).Skip(1).ToList();
-            foreach(T entity in entities)
+            var ordered = List.OrderBy(x => x.Id).ToList();
+            int last = ordered[0].Id;
+            for (int i = 1; i < ordered.Count; i++)
             {
-                if (entity.Id != last + 1)
+                if (ordered[i].Id != last + 1)
                 {
-                    return entity.Id;
+                    return last + 1;
                 }
-                last = entity.Id;
+                last = ordered[i].Id;
             }
             return last + 1;
         }
@@ -66,14 +87,20 @@ public class XMLStore<T> where T : IIndexable
 
     public void Add(T item)
     {
-        item.Id = GetNextIndex();
-        List.Add(item);
-        RewriteList();
+        lock (_sync)
+        {
+            item.Id = GetNextIndex();
+            List.Add(item);
+            RewriteListUnsafe();
+        }
     }
 
     public void Delete(T item)
     {
-        List.Remove(item);
-        RewriteList();
+        lock (_sync)
+        {
+            List.Remove(item);
+            RewriteListUnsafe();
+        }
     }
 }
